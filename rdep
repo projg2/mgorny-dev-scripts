@@ -1,0 +1,13 @@
+#!/bin/sh
+# print revdeps of specified packages
+
+for pkg; do
+	echo "==rdep of ${pkg}=="
+	GET https://qa-reports.gentoo.org/output/genrdeps/rindex/${pkg}
+	echo "==ddep of ${pkg}=="
+	GET https://qa-reports.gentoo.org/output/genrdeps/dindex/${pkg}
+	echo "==bdep of ${pkg}=="
+	GET https://qa-reports.gentoo.org/output/genrdeps/bindex/${pkg}
+	echo "==pdep of ${pkg}=="
+	GET https://qa-reports.gentoo.org/output/genrdeps/pindex/${pkg}
+done

@@ -1,0 +1,8 @@
+#!/bin/sh
+# diff sources unpacked by two ebuilds (works only for simple ebuilds)
+
+set -e -x
+
+ebuild "${1}" unpack
+ebuild "${2}" unpack
+diff -dupr /tmp/portage/*/${1%.ebuild}/work/* /tmp/portage/*/${2%.ebuild}/work/* | less
