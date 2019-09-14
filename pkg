@@ -1,5 +1,5 @@
 #!/bin/sh
 # print package name for current directory
 
-#pwd -P | awk -F/ '{print $(NF-1) "/" $(NF)}'
-realpath --relative-to=../.. .
+path=$(git rev-parse --show-prefix)
+echo "${path%/}"
