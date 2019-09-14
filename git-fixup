@@ -1,0 +1,5 @@
+#!/bin/sh
+# commit a fixup! to the last change in specified file/directory
+# (current directory by default)
+
+exec git commit --fixup $(git log --format='%H' -1 "${@:-.}") "${@:-.}"
