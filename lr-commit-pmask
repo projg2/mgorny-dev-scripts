@@ -1,0 +1,27 @@
+#!/bin/bash
+# commit the new entry to package.mask
+
+set -e
+
+path_config=${XDG_CONFIG_HOME:-~/.config}/gentoo-dev-repo.path
+repo_loc=~/git/gentoo
+[[ -f ${path_config} ]] && repo_loc=$(<"${path_config}")
+
+cd "${repo_loc}"
+[[ -n "$(git diff -U0 profiles/package.mask)" ]]
+
+# 1. package(s)
+pkg=(
+	$(git diff -U0 profiles/package.mask | sed -n -e 's/^+\([^+#]\)/\1/p')
+)
+pkg="${pkg[*]}"
+
+# 2. bugno
+bugno=$(git diff -U0 profiles/package.mask |
+	sed -n -e 's/^+#.*Removal.* Bug #\([0-9]\+\)./\1/p')
+
+msg="package.mask: Last rite ${pkg// /, }${bugno:+
+
+Bug: https://bugs.gentoo.org/${bugno}}"
+
+exec git commit -s -S -m "${msg}" profiles/package.mask

@@ -1,0 +1,4 @@
+#!/bin/sh
+# open a browser with template for filing removal bug for pkg ${1}
+
+exec xdg-open "https://bugs.gentoo.org/enter_bug.cgi?product=Gentoo%20Linux&component=Current+packages&short_desc=$1:+removal&keywords=PMASKED&cc=treecleaner@gentoo.org&deadline=$(date --date='today + 30 day' +%Y-%m-%d)"

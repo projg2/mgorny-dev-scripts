@@ -1,0 +1,42 @@
+#!/bin/bash
+# remove the specified package, opening all relevant bugs in the browser
+# and grepping profiles for stale references
+# note: package.mask entry must be removed first!
+
+path_config=${XDG_CONFIG_HOME:-~/.config}/gentoo-dev-repo.path
+repo_loc=~/git/gentoo
+[[ -f ${path_config} ]] && repo_loc=$(<"${path_config}")
+
+pkg=${1}; shift
+
+if ! [[ ${pkg} ]]; then
+	echo "Usage: ${0} cat/pkg [bugno]"
+	exit 1
+fi
+
+set -e -x
+cd "${repo_loc}"
+git rm -r "${pkg}"
+urls=(
+	"${@/#/https:\/\/bugs.gentoo.org\/show_bug.cgi?id=}"
+	"https://bugs.gentoo.org/buglist.cgi?no_redirect=1&quicksearch=${pkg#*/}"
+)
+if type -P exo-open &>/dev/null; then
+	exo-open "${urls[@]}"
+else
+	for url in "${urls[@]}"; do
+		xdg-open "${url}"
+	done
+fi
+git --no-pager grep "${pkg}" profiles/ || :
+
+msg="${pkg}: Remove last-rited pkg
+"
+if [[ ${bug} ]]; then
+	for bug; do
+		msg+="
+Closes: https://bugs.gentoo.org/${bug}"
+	done
+fi
+
+exec git commit -a -s -S -m "${msg}"

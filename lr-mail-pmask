@@ -1,0 +1,19 @@
+#!/bin/bash
+# open a mail client with template last rites mail based on current diff
+
+set -e
+
+path_config=${XDG_CONFIG_HOME:-~/.config}/gentoo-dev-repo.path
+repo_loc=~/git/gentoo
+[[ -f ${path_config} ]] && repo_loc=$(<"${path_config}")
+
+cd "${repo_loc}"
+msg=$(
+	git diff -U0 HEAD^ profiles/package.mask |
+	sed -n -e 's/^+\([^+]\)/\1/p'
+)
+
+pkg=( $(echo "${msg}" | grep '^[^#]') )
+pkg="${pkg[*]}"
+
+exec xdg-open "mailto:gentoo-dev-announce@lists.gentoo.org?cc=gentoo-dev@lists.gentoo.org&reply-to=gentoo-dev@lists.gentoo.org&subject=Last+rites:+${pkg// /, }&body=${msg//#/%23}"
