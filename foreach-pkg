@@ -1,0 +1,17 @@
+#!/bin/bash
+# run bash inside each package directory specified
+
+set -e
+
+path_config=${XDG_CONFIG_HOME:-~/.config}/gentoo-dev-repo.path
+repo_loc=~/git/gentoo
+[[ -f ${path_config} ]] && repo_loc=$(<"${path_config}")
+
+cd "${repo_loc}"
+for pkg; do
+	(
+		export pkg
+		cd "${pkg}"
+		bash || :
+	)
+done
