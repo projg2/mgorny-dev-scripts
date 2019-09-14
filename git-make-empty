@@ -1,0 +1,9 @@
+#!/bin/sh
+# create and check an empty branch out in git repo
+# (clean way of doing 'rm -Rf *')
+
+set -e -x
+
+git checkout --orphan empty
+git reset --hard
+exec git commit --allow-empty -m empty
