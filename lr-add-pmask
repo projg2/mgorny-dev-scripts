@@ -1,10 +1,6 @@
 #!/bin/sh
 # add a template package.mask entry for pkg ${1} with bug ${2}
 
-path_config=${XDG_CONFIG_HOME:-~/.config}/gentoo-dev-repo.path
-repo_loc=~/git/gentoo
-[ -f "${path_config}" ] && repo_loc=$(cat "${path_config}")
-
 pkg=${1}
 bug=${2}
 
@@ -13,8 +9,12 @@ if [ -z "${pkg}" ]; then
 	exit 1
 fi
 
+set -e
+
+cd "$(git rev-parse --show-toplevel)"
+
 exec sed -i -e "/#--- END OF EXAMPLES ---/a\
 \\\n\
 # Michał Górny <mgorny@gentoo.org> ($(LC_ALL=C date '+%Y-%m-%d'))\n\
 # Removal in 30 days.${bug:+  Bug #${bug}.}\n\
-${pkg}" "${repo_loc}"/profiles/package.mask
+${pkg}" profiles/package.mask

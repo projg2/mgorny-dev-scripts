@@ -7,11 +7,7 @@ set -e
 maint=${1}
 shift
 
-path_config=${XDG_CONFIG_HOME:-~/.config}/gentoo-dev-repo.path
-repo_loc=~/git/gentoo
-[[ -f ${path_config} ]] && repo_loc=$(<"${path_config}")
-
-cd "${repo_loc}"
+cd "$(git rev-parse --show-toplevel)"
 exec 77< <(git grep -l "${maint}" '**/metadata.xml' | cut -d/ -f1-2)
 
 while read -r -u 77 pkg; do
