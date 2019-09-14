@@ -1,0 +1,9 @@
+#!/bin/bash
+# run specified command for each git repository found in current dir
+
+while read -u 4 -d '' -r f; do
+	echo "[${f%.git}]" >&2
+	(
+		cd "${f%.git}" && "${@}"
+	)
+done 4< <(find -name .git -print0)
