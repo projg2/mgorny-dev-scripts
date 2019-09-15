@@ -13,8 +13,10 @@ set -e
 
 cd "$(git rev-parse --show-toplevel)"
 
+user=${ECHANGELOG_USER:-$(git config --get user.name) <$(git config --get user.email)>}
+
 exec sed -i -e "/#--- END OF EXAMPLES ---/a\
 \\\n\
-# Michał Górny <mgorny@gentoo.org> ($(LC_ALL=C date '+%Y-%m-%d'))\n\
+# ${user} ($(date '+%Y-%m-%d'))\n\
 # Removal in 30 days.${bug:+  Bug #${bug}.}\n\
 ${pkg}" profiles/package.mask
