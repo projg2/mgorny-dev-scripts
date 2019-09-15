@@ -28,7 +28,7 @@ git --no-pager grep "${pkg}" profiles/ || :
 
 msg="${pkg}: Remove last-rited pkg
 "
-if [[ ${bug} ]]; then
+if [[ -n ${@} ]]; then
 	for bug; do
 		msg+="
 Closes: https://bugs.gentoo.org/${bug}"
