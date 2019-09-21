@@ -10,6 +10,6 @@ msg=$(
 )
 
 pkg=( $(echo "${msg}" | grep '^[^#]') )
-pkg="${pkg[*]}"
+pkg=${pkg[*]}
 
-exec xdg-open "mailto:gentoo-dev-announce@lists.gentoo.org?cc=gentoo-dev@lists.gentoo.org&reply-to=gentoo-dev@lists.gentoo.org&subject=Last+rites:+${pkg// /, }&body=${msg//#/%23}"
+exec xdg-open "mailto:gentoo-dev-announce@lists.gentoo.org?cc=gentoo-dev@lists.gentoo.org&reply-to=gentoo-dev@lists.gentoo.org&subject=$(urlencode <<<"Last rites: ${pkg// /, }")&body=$(urlencode <<<"${msg}")"

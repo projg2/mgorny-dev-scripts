@@ -126,7 +126,7 @@ in automated solutions.  Typical usage::
 
 file-stablereq
 --------------
-Dependencies: xdg-utils
+Dependencies: xdg-utils, perl
 
 Runs a web browser with pre-filled Bugzilla template for requesting
 stabilization of package specified as the first argument.  Typical
@@ -140,7 +140,7 @@ Lastriting helpers
 
 lr-file-bug
 -----------
-Dependencies: xdg-utils
+Dependencies: xdg-utils, perl
 
 Opens a web browser with pre-filled bug template for removing a package
 specified as the first argument, after 30 days.  Typical usage::
@@ -176,7 +176,7 @@ in ``git diff``, and commits it.  Typical usage::
 
 lr-mail-pmask
 -------------
-Dependencies: git, xdg-utils
+Dependencies: git, xdg-utils, perl
 
 Attempts to determine package and bug list from package.mask entry
 in ``git diff``, and spawns e-mail client in order to send last rites
@@ -189,7 +189,7 @@ mail.  Typical usage::
 
 lr-remove
 ---------
-Dependencies: git, portage, xdg-utils or exo (from xfce)
+Dependencies: git, portage, xdg-utils or exo (from xfce), perl
 
 Takes a package name as the first argument, and bug numbers as remaining
 arguments.  Removes the specified package and commits it as lastrited

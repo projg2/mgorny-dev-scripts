@@ -15,7 +15,7 @@ cd "$(git rev-parse --show-toplevel)"
 git rm -r "${pkg}"
 urls=(
 	"${@/#/https:\/\/bugs.gentoo.org\/show_bug.cgi?id=}"
-	"https://bugs.gentoo.org/buglist.cgi?no_redirect=1&quicksearch=${pkg#*/}"
+	"https://bugs.gentoo.org/buglist.cgi?no_redirect=1&quicksearch=$(urlencode <<<"${pkg}")"
 )
 if type -P exo-open &>/dev/null; then
 	exo-open "${urls[@]}"
