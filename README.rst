@@ -147,6 +147,15 @@ usage::
 
     file-stablereq app-foo/bar-1.2.3
 
+find-pkg-bugs
+-------------
+Dependencies: xdg-utils, perl
+
+Runs a web browser with Bugzilla search for bugs referring to any
+of the packages listed on command-line.  Typical usage::
+
+    find-pkg-bugs app-bar/foo app-foo/bar
+
 
 Lastriting helpers
 ==================

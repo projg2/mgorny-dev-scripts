@@ -1,0 +1,12 @@
+#!/bin/bash
+
+search=
+while [[ ${#} -gt 0 ]]; do
+	search+=${1}
+	[[ -n ${2} ]] && search+=' OR '
+	shift
+done
+
+set -e
+
+exec xdg-open "https://bugs.gentoo.org/buglist.cgi?quicksearch=$(urlencode <<<"${search}")"
