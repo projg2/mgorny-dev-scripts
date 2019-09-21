@@ -124,6 +124,19 @@ in automated solutions.  Typical usage::
 
     rdep app-foo/bar app-foo/frobnicate
 
+
+Bugzilla helpers
+================
+
+file-pkgcheck
+-------------
+Dependencies: pkgcheck, xdg-utils or exo (from xfce), perl
+
+Run pkgcheck on specified packages, and open bug templates for each
+result set.  Typical usage::
+
+    file-pkgcheck app-foo/bar
+
 file-stablereq
 --------------
 Dependencies: xdg-utils, perl
