@@ -5,7 +5,7 @@
 urls=()
 
 for pkg; do
-	res=$(pkgcheck scan "${pkg}" 2>&1 | tee /dev/fd/2)
+	res=$(pkgcheck scan ${PKGCHECK_ARGS} "${pkg}" 2>&1 | tee /dev/fd/2)
 	[[ -z ${res} ]] && continue
 	enc=$(urlencode <<<"${res}")
 	pkgenc=$(urlencode <<<"${pkg}")
