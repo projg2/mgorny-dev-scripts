@@ -2,12 +2,12 @@
 # print revdeps of packages specified on command-line
 
 for pkg; do
-	echo "== rdep of ${pkg} =="
+	echo "== rdep of ${pkg} ==" >&2
 	wget -q -O - https://qa-reports.gentoo.org/output/genrdeps/rindex/${pkg}
-	echo "== ddep of ${pkg} =="
+	echo "== ddep of ${pkg} ==" >&2
 	wget -q -O - https://qa-reports.gentoo.org/output/genrdeps/dindex/${pkg}
-	echo "== bdep of ${pkg} =="
+	echo "== bdep of ${pkg} ==" >&2
 	wget -q -O - https://qa-reports.gentoo.org/output/genrdeps/bindex/${pkg}
-	echo "== pdep of ${pkg} =="
+	echo "== pdep of ${pkg} ==" >&2
 	wget -q -O - https://qa-reports.gentoo.org/output/genrdeps/pindex/${pkg}
 done
