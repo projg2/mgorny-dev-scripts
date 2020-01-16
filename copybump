@@ -2,5 +2,6 @@
 # update copyright headers in specified files
 # typical usage: copybump $(git diff --name-only origin)
 
-exec sed -i -r -e "1s:(Copyright.*[0-9]{4})-[0-9]{4}:\1-$(date +%Y):" \
+exec sed -i -r -e "1s:(Copyright.* [0-9]{4})(-[0-9]{4})?:\1-$(date +%Y):" \
+	-e "1s:(Copyright.* $(date +%Y))-$(date +%Y):\1:" \
 	-e "1s:Gentoo Foundation:Gentoo Authors:" "${@}"
