@@ -1,13 +1,21 @@
 #!/bin/sh
 # print revdeps of packages specified on command-line
 
+fetch() {
+	if [ -d /tmp/${1}index ]; then
+		cat /tmp/${1}index/${pkg}
+	else
+		wget -q -O - https://qa-reports.gentoo.org/output/genrdeps/${1}index/${pkg}
+	fi
+}
+
 for pkg; do
 	echo "== rdep of ${pkg} ==" >&2
-	wget -q -O - https://qa-reports.gentoo.org/output/genrdeps/rindex/${pkg}
+	fetch r
 	echo "== ddep of ${pkg} ==" >&2
-	wget -q -O - https://qa-reports.gentoo.org/output/genrdeps/dindex/${pkg}
+	fetch d
 	echo "== bdep of ${pkg} ==" >&2
-	wget -q -O - https://qa-reports.gentoo.org/output/genrdeps/bindex/${pkg}
+	fetch b
 	echo "== pdep of ${pkg} ==" >&2
-	wget -q -O - https://qa-reports.gentoo.org/output/genrdeps/pindex/${pkg}
+	fetch p
 done
