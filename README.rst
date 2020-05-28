@@ -119,10 +119,14 @@ rdep
 Dependencies: wget
 
 Accepts one or more cat/pns and prints their reverse dependencies.
-The data is fetch from qa-reports.g.o, so please do not use this
-in automated solutions.  Typical usage::
+The data is fetched from qa-reports.g.o.  Typical usage::
 
     rdep app-foo/bar app-foo/frobnicate
+
+If you plan to use it on a larger number of packages, you can prefetch
+all data and have it put into ``/tmp``::
+
+    rdep-fetch-cache
 
 
 Bugzilla helpers

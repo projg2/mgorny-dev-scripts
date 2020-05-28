@@ -1,0 +1,6 @@
+#!/bin/sh
+# fetch cache for rdep
+
+cd /tmp &&
+exec wget -O - https://qa-reports.gentoo.org/output/genrdeps/rdeps.tar.xz |
+	tar -xJ
