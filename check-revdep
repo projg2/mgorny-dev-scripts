@@ -1,0 +1,9 @@
+#!/bin/sh
+# check packages' revdeps (defaults to current pkg)
+
+if [ ${#} -eq 0 ]; then
+	set -- $(pkg)
+fi
+
+rdep "${@}" | grep -v '^\[B' | xargs qatom -C -F '%{CATEGORY}/%{PN}' |
+	sort -u | xargs pkgcheck scan -c VisibilityCheck
