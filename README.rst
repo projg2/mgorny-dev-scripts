@@ -93,7 +93,7 @@ pkgbump
 Dependencies: portage, gentoolkit (ekeyword), git
 
 Copies ebuild for a version bump, dropping keywords, updating Manifest
-and running ``pkgdiff`` to compare archives.  Typical usage::
+and running pkgdiff_ to compare archives.  Typical usage::
 
     pkgbump foo-1.0.ebuild foo-1.1.ebuild
 
