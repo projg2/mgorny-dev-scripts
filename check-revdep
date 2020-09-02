@@ -6,4 +6,4 @@ if [ ${#} -eq 0 ]; then
 fi
 
 rdep "${@}" | grep -v '^\[B' | xargs qatom -C -F '%{CATEGORY}/%{PN}' |
-	sort -u | xargs pkgcheck scan -c VisibilityCheck
+	sort -u | xargs pkgcheck scan -c VisibilityCheck nonexist/nonexist
