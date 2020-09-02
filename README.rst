@@ -58,6 +58,25 @@ Typical usage::
 Package maintenance helpers
 ===========================
 
+check-revdep
+------------
+Dependecies: pkgcore, portage-utils
+
+Runs a visibility (dependency) check for all reverse dependencies
+of the specified packages (or the current package, if none specified).
+This can be used to verify that the cleanup of given package does not
+break any revdeps (e.g. using ``<`` deps or old USE flags).  Typical
+usage::
+
+    cd foo/bar
+    git rm bar-1.ebuild
+    check-revdep
+    repoman manifest
+    pkgcommit -sS . -m 'Remove old'
+
+Uses rdep_ command.  You may want to call ``rdep-fetch-cache`` if you
+plan on using it multiple times.
+
 pkgdiff
 -------
 Dependencies: portage
@@ -140,6 +159,16 @@ Run pkgcheck on specified packages, and open bug templates for each
 result set.  Typical usage::
 
     file-pkgcheck app-foo/bar
+
+file-rekeywordreq
+-----------------
+Dependencies: xdg-utils, perl
+
+Runs a web browser with pre-filled Bugzilla template for requesting
+rekeywording of the package specified as the first argument.  Typical
+usage::
+
+    file-rekeywordreq app-foo/bar
 
 file-stablereq
 --------------
