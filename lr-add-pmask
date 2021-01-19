@@ -18,5 +18,5 @@ user=${ECHANGELOG_USER:-$(git config --get user.name) <$(git config --get user.e
 exec sed -i -e "/#--- END OF EXAMPLES ---/a\
 \\\n\
 # ${user} ($(date '+%Y-%m-%d'))\n\
-# Removal in 30 days.${bug:+  Bug #${bug}.}\n\
+# Removal on $(date --date='today + 30 day' '+%Y-%m-%d').${bug:+  Bug #${bug}.}\n\
 ${pkg}" profiles/package.mask
