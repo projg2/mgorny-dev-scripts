@@ -6,5 +6,5 @@ set -e -x
 tmpdir=$(portageq envvar PORTAGE_TMPDIR)
 ebuild "${1}" unpack
 ebuild "${2}" unpack
-diff -dupr "${tmpdir}"/portage/*/${1%.ebuild}/work/* \
+diff -dupNr "${tmpdir}"/portage/*/${1%.ebuild}/work/* \
 	"${tmpdir}"/portage/*/${2%.ebuild}/work/* | ${PAGER:-less}
