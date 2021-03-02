@@ -3,14 +3,8 @@
 
 set -e -x
 
-ignore_git_dir=${1}
-if [ "${ignore_git_dir}" = '--ignore-git-dir' ]; then
-	exclude_pattern=".git"
-	shift
-fi
-
 tmpdir=$(portageq envvar PORTAGE_TMPDIR)
 ebuild "${1}" unpack
 ebuild "${2}" unpack
-diff -dupNr --exclude="${exclude_pattern}" "${tmpdir}"/portage/*/${1%.ebuild}/work/* \
+diff -dupNr --exclude=".git" "${tmpdir}"/portage/*/${1%.ebuild}/work/* \
 	"${tmpdir}"/portage/*/${2%.ebuild}/work/* | ${PAGER:-less}
