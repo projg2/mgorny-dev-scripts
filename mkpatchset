@@ -1,0 +1,24 @@
+#!/bin/sh
+# create a patchset tarball and upload it to dev.g.o
+
+set -e -x
+tag=${1}
+name=${2}
+upstream=${3}
+subdir=${4}
+
+if [ -z "${tag}" -o -z "${name}" -o -z "${upstream}" ]; then
+	echo "Usage: ${0} <tag> <archive-name> <upstream-tag> [<dgo-subdir>]" >&2
+	exit 1
+fi
+
+git tag "${tag}"
+
+mkdir "${name}"
+cd "${name}"
+git format-patch "${upstream}"
+cd ..
+tar -cf "${name}".tar "${name}"
+xz -9e "${name}".tar
+scp "${name}".tar.xz "dev.gentoo.org:public_html/dist/${subdir}"
+rm -r "${name}"{,.tar.xz}

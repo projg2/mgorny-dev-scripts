@@ -97,6 +97,16 @@ and running pkgdiff_ to compare archives.  Typical usage::
 
     pkgbump foo-1.0.ebuild foo-1.1.ebuild
 
+mkpatchset
+----------
+Dependencies: git, scp
+
+Create a patchset from fork-style repository, and upload it
+to dev.gentoo.org.  Typical usage::
+
+    #          tag          archive-name                upstream dgo-subdir
+    mkpatchset gentoo-3.9.8 python-gentoo-patches-3.9.8 v3.9.8   python/
+
 
 Package tree iteration helpers
 ==============================
