@@ -1,0 +1,6 @@
+#!/bin/sh
+# grab stabilization candidates and pipe them into eshowkw
+
+pkgcheck scan -c StableRequestCheck \
+	-R FormatReporter --format '{category}/{package}' "${@}" |
+	xargs eshowkw -C |& ${PAGER:-less}

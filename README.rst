@@ -274,6 +274,41 @@ usage::
     git reset --hard HEAD^
 
 
+Stabilization helpers
+=====================
+
+stablereq-eshowkw
+-----------------
+Dependencies: pkgcheck, gentoolkit, pager
+
+Find stabilization candidates and pipe them into eshowkw.  The script
+accepts pkgcheck arguments.  Typical usage::
+
+    stablereq-eshowkw 'dev-python/*'
+
+
+stablereq-find-pkg-bugs
+-----------------------
+Dependencies: pkgcheck, xdg-utils, perl
+
+Find stabilization candidates and open a Bugzilla search in the web
+browser for the relevant packages.  The script accepts pkgcheck
+arguments.  Typical usage::
+
+    stablereq-find-pkg-bugs 'dev-python/*'
+
+
+stablereq-make-list
+---------------------
+Dependencies: pkgcheck, editor
+
+Find stabilization candidates and pipe a list of file-stablereq calls
+into an editor for editing and then running.  The script accepts
+pkgcheck arguments.  Typical usage::
+
+    stablereq-make-list 'dev-python/*'
+
+
 Generic git repository helpers
 ==============================
 

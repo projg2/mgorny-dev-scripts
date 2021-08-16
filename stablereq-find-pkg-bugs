@@ -1,0 +1,6 @@
+#!/bin/sh
+# grab stabilization candidates and pipe them into find-pkg-bugs
+
+pkgcheck scan -c StableRequestCheck \
+	-R FormatReporter --format '{category}/{package}' "${@}" |
+	xargs -n40 find-pkg-bugs
