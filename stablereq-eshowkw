@@ -3,4 +3,4 @@
 
 pkgcheck scan -c StableRequestCheck \
 	-R FormatReporter --format '{category}/{package}' "${@}" |
-	xargs eshowkw -C |& ${PAGER:-less}
+	sort | xargs eshowkw -C |& ${PAGER:-less}

@@ -3,4 +3,4 @@
 
 pkgcheck scan -c StableRequestCheck \
 	-R FormatReporter --format '{category}/{package}' "${@}" |
-	xargs -n40 find-pkg-bugs
+	sort | xargs -n40 find-pkg-bugs
