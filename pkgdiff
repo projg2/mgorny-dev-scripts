@@ -6,6 +6,6 @@ set -e -x
 tmpdir=$(portageq envvar PORTAGE_TMPDIR)
 ebuild "${1}" unpack
 ebuild "${2}" unpack
-diff --strip-trailing-cr -dupNr \
-	"${tmpdir}"/portage/*/${1%.ebuild}/work/* \
-	"${tmpdir}"/portage/*/${2%.ebuild}/work/* | ${PAGER:-less}
+s1=$(sed -nr 's/^declare -x S="(.*)"/\1/p' "${tmpdir}"/portage/*/${1%.ebuild}/temp/environment)
+s2=$(sed -nr 's/^declare -x S="(.*)"/\1/p' "${tmpdir}"/portage/*/${2%.ebuild}/temp/environment)
+diff --strip-trailing-cr -dupNr "${s1}" "${s2}" | ${PAGER:-less}
