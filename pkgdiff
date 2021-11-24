@@ -8,4 +8,4 @@ ebuild "${1}" unpack
 ebuild "${2}" unpack
 s1=$(sed -nr 's/^declare -x S="(.*)"/\1/p' "${tmpdir}"/portage/*/${1%.ebuild}/temp/environment)
 s2=$(sed -nr 's/^declare -x S="(.*)"/\1/p' "${tmpdir}"/portage/*/${2%.ebuild}/temp/environment)
-diff --strip-trailing-cr -dupNr "${s1}" "${s2}" | ${PAGER:-less}
+diff --color=always --strip-trailing-cr -dupNr "${s1}" "${s2}" | ${PAGER:-less}
