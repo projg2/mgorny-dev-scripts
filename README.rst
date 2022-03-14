@@ -137,6 +137,25 @@ for further interaction.  Typical usage::
     # runs eshowkw in all xfce@ packages that have more than one version
     foreach-pkg-maint xfce@gentoo.org if-multiple-versions eshowkw -C |& less
 
+llvm-foreach-pkg & llvm-foreach-pkg-rev
+---------------------------------------
+Runs the specified command in directories of all LLVM packages.
+The non-suffixed variant iterates over them in dependency first order
+(e.g. suitable for bumps), while -rev uses the reverse order
+(e.g. suitable for cleanups).  Note that the command is not undergoing
+bash expansions.
+
+Typical usage::
+
+    llvm-foreach-pkg sh -c 'x=( *14.0.0.9999* ); cp ${x} ${x/.9999}'
+    git add -A
+    GENTOO_MIRRORS= repoman manifest --if-modified=y
+    llvm-foreach-pkg pkgcommit -sS . -m "Bump to 14.0.0"
+
+    llvm-foreach-pkg sh -c 'git rm *14.0.0_rc4*'
+    GENTOO_MIRRORS= repoman manifest --if-modified=y
+    llvm-foreach-pkg-rev pkgcommit -sS . -m "Remove 14.0.0_rc4"
+
 if-multiple-versions
 --------------------
 Wrapper that runs the specified command if the current directory

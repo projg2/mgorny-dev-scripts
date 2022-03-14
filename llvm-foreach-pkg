@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# run specified command for all LLVM packages, in bump order
+
+cd "$(git rev-parse --show-toplevel)" || exit 1
+
+packages=(
+	sys-devel/llvm-common
+	sys-devel/llvm
+	sys-devel/llvmgold
+	dev-ml/llvm-ocaml
+	sys-devel/clang-common
+	sys-devel/clang
+	dev-python/clang-python
+	dev-python/lit
+	sys-devel/lld
+	dev-util/lldb
+	sys-libs/compiler-rt
+	sys-libs/compiler-rt-sanitizers
+	sys-libs/llvm-libunwind
+	sys-libs/libcxxabi
+	sys-libs/libcxx
+	sys-libs/libomp
+	sys-devel/clang-runtime
+	dev-libs/libclc
+)
+
+for pkg in "${packages[@]}"; do
+	(
+		cd "${pkg}" &&
+		"${@}"
+	)
+done
