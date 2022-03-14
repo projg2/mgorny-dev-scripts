@@ -1,0 +1,36 @@
+#!/bin/bash
+# bump botocore, boto3 and awscli
+
+set -e
+
+scriptdir=${BASH_SOURCE%/*}
+cd "$(git rev-parse --show-toplevel)"
+
+OLDV=${1}
+NEWV=${2}
+if ! [[ ${OLDV} && ${NEWV} ]]; then
+	echo "Usage: ${0} <old-last-version-comp> <new-last-version-comp>" >&2
+	exit 1
+fi
+
+BOTOCORE_MINOR=24
+BOTO3_MINOR=$(( BOTOCORE_MINOR - 3 ))
+AWSCLI_MINOR=$(( BOTOCORE_MINOR - 2 ))
+
+bump_pkg() {
+	local pkg=${1}
+	local pn=${pkg#*/}
+	local oldv=${2}.${3}
+	local newv=${2}.${4}
+
+	(
+		cd "${pkg}"
+		"${scriptdir}"/pkgbump "${pn}-${oldv}.ebuild" "${pn}-${newv}.ebuild"
+		${EDITOR:-vim} "${pn}-${newv}.ebuild"
+		"${scriptdir}"/pkgcommit . -sS -m "Bump to ${newv}"
+	)
+}
+
+bump_pkg dev-python/botocore 1.${BOTOCORE_MINOR} ${OLDV} ${NEWV}
+bump_pkg dev-python/boto3 1.${BOTO3_MINOR} ${OLDV} ${NEWV}
+bump_pkg app-admin/awscli 1.${AWSCLI_MINOR} $(( OLDV + 55 )) $(( NEWV + 55 ))
