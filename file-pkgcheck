@@ -2,13 +2,14 @@
 # run pkgcheck on one or more packages, and open bug templates for each
 # triggering pkgcheck report
 
+scriptdir=${BASH_SOURCE%/*}
 urls=()
 
 for pkg; do
 	res=$(pkgcheck scan ${PKGCHECK_ARGS} "${@}" 2>&1 | tee /dev/fd/2)
 	[[ -z ${res} ]] && continue
-	enc=$(urlencode <<<"${res}")
-	pkgenc=$(urlencode <<<"${pkg}")
+	enc=$("${scriptdir}"/urlencode <<<"${res}")
+	pkgenc=$("${scriptdir}"/urlencode <<<"${pkg}")
 	ciurl="https://qa-reports.gentoo.org/output/gentoo-ci/output.html%23${pkgenc}"
 	urls+=(
 		"https://bugs.gentoo.org/enter_bug.cgi?product=Gentoo%20Linux&component=Current+packages&bug_file_loc=${ciurl}&short_desc=${pkgenc}:+QA+issues&comment=${enc::2048}"

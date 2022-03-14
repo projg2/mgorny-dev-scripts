@@ -3,6 +3,7 @@
 
 set -e
 
+scriptdir=${BASH_SOURCE%/*}
 pkgs=${*}
 nl=$'\n'
-exec xdg-open "https://bugs.gentoo.org/enter_bug.cgi?product=Gentoo%20Linux&component=Keywording&bug_severity=enhancement&short_desc=$(urlencode <<<"${pkgs// /, }: rekeyword")&cf_stabilisation_atoms=$(urlencode <<<"${pkgs// /${nl}}")&keywords=CC-ARCHES&comment=Please+restore+keywords."
+exec xdg-open "https://bugs.gentoo.org/enter_bug.cgi?product=Gentoo%20Linux&component=Keywording&bug_severity=enhancement&short_desc=$("${scriptdir}"/urlencode <<<"${pkgs// /, }: rekeyword")&cf_stabilisation_atoms=$("${scriptdir}"/urlencode <<<"${pkgs// /${nl}}")&keywords=CC-ARCHES&comment=Please+restore+keywords."

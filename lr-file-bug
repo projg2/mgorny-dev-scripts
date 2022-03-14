@@ -3,5 +3,6 @@
 
 set -e
 
+scriptdir=${BASH_SOURCE%/*}
 pkgs=${*}
-exec xdg-open "https://bugs.gentoo.org/enter_bug.cgi?product=Gentoo%20Linux&component=Current+packages&short_desc=$(urlencode <<<"${pkgs// /, }: removal")&keywords=PMASKED&cc=treecleaner@gentoo.org&deadline=$(date --date='today + 30 day' +%Y-%m-%d)"
+exec xdg-open "https://bugs.gentoo.org/enter_bug.cgi?product=Gentoo%20Linux&component=Current+packages&short_desc=$("${scriptdir}"/urlencode <<<"${pkgs// /, }: removal")&keywords=PMASKED&cc=treecleaner@gentoo.org&deadline=$(date --date='today + 30 day' +%Y-%m-%d)"

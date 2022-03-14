@@ -1,5 +1,6 @@
 #!/bin/bash
 
+scriptdir=${BASH_SOURCE%/*}
 search=
 while [[ ${#} -gt 0 ]]; do
 	search+=${1}
@@ -9,4 +10,4 @@ done
 
 set -e
 
-exec xdg-open "https://bugs.gentoo.org/buglist.cgi?quicksearch=$(urlencode <<<"${search}")"
+exec xdg-open "https://bugs.gentoo.org/buglist.cgi?quicksearch=$("${scriptdir}"/urlencode <<<"${search}")"

@@ -2,6 +2,7 @@
 # open a browser to file stablereq for kernel versions ${@}
 
 set -e
+scriptdir=${BASH_SOURCE%/*}
 
 for ver; do
 	pkgs="virtual/dist-kernel-${ver} *
@@ -9,5 +10,5 @@ sys-kernel/gentoo-kernel-${ver} *
 sys-kernel/gentoo-kernel-bin-${ver} *"
 
 	nl=$'\n'
-	exec xdg-open "https://bugs.gentoo.org/enter_bug.cgi?product=Gentoo%20Linux&component=Stabilization&bug_severity=enhancement&short_desc=$(urlencode <<<"${pkgs%% *}: stablereq")&cf_stabilisation_atoms=$(urlencode <<<"${pkgs}")&keywords=CC-ARCHES&comment=Please+stabilize."
+	exec xdg-open "https://bugs.gentoo.org/enter_bug.cgi?product=Gentoo%20Linux&component=Stabilization&bug_severity=enhancement&short_desc=$("${scriptdir}"/urlencode <<<"${pkgs%% *}: stablereq")&cf_stabilisation_atoms=$("${scriptdir}"/urlencode <<<"${pkgs}")&keywords=CC-ARCHES&comment=Please+stabilize."
 done

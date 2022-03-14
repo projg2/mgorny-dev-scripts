@@ -3,6 +3,7 @@
 
 set -e
 
+scriptdir=${BASH_SOURCE%/*}
 cd "$(git rev-parse --show-toplevel)"
 msg=$(
 	git diff -U0 HEAD^ profiles/package.mask |
@@ -12,4 +13,4 @@ msg=$(
 pkg=( $(echo "${msg}" | grep '^[^#]') )
 pkg=${pkg[*]}
 
-exec xdg-open "mailto:gentoo-dev-announce@lists.gentoo.org?cc=gentoo-dev@lists.gentoo.org&reply-to=gentoo-dev@lists.gentoo.org&subject=$(urlencode <<<"Last rites: ${pkg// /, }")&body=$(urlencode <<<"${msg}")"
+exec xdg-open "mailto:gentoo-dev-announce@lists.gentoo.org?cc=gentoo-dev@lists.gentoo.org&reply-to=gentoo-dev@lists.gentoo.org&subject=$("${scriptdir}"/urlencode <<<"Last rites: ${pkg// /, }")&body=$("${scriptdir}"/urlencode <<<"${msg}")"
