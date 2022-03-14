@@ -209,6 +209,16 @@ usage::
 
     file-stablereq app-foo/bar-1.2.3
 
+file-kernel-stablereq
+---------------------
+Dependencies: xdg-utils, perl
+
+Runs a web browser with pre-filled Bugzilla template for requesting
+stabilization of dist-kernel versions specified as arguments.  Typical
+usage::
+
+    file-kernel-stablereq 5.10.96 5.4.176
+
 find-pkg-bugs
 -------------
 Dependencies: xdg-utils, perl
