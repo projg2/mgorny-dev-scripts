@@ -71,7 +71,7 @@ usage::
     cd foo/bar
     git rm bar-1.ebuild
     check-revdep
-    repoman manifest
+    pkgdev manifest
     pkgcommit -sS . -m 'Remove old'
 
 Uses rdep_ command.  You may want to call ``rdep-fetch-cache`` if you
@@ -149,11 +149,11 @@ Typical usage::
 
     llvm-foreach-pkg sh -c 'x=( *14.0.0.9999* ); cp ${x} ${x/.9999}'
     git add -A
-    GENTOO_MIRRORS= repoman manifest --if-modified=y
+    pkgdev manifest
     llvm-foreach-pkg pkgcommit -sS . -m "Bump to 14.0.0"
 
     llvm-foreach-pkg sh -c 'git rm *14.0.0_rc4*'
-    GENTOO_MIRRORS= repoman manifest --if-modified=y
+    pkgdev manifest
     llvm-foreach-pkg-rev pkgcommit -sS . -m "Remove 14.0.0_rc4"
 
 if-multiple-versions
