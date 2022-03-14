@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -e -x
+ver=${1}
+[[ -n ${ver} ]]
+exec mkpatchset "gentoo-${ver}" "python-gentoo-patches-${ver}" \
+	"v${ver%_p*}" python/

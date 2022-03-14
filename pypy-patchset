@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -e -x
+branch=${1}
+[[ -n ${branch} ]]
+ver=${2}
+[[ -n ${ver} ]]
+exec mkpatchset "gentoo-${branch}-${ver}" \
+	"pypy${branch}-gentoo-patches-${ver}" \
+	"release-pypy${branch}-v${ver%_p*}" python/

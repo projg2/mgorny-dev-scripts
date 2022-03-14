@@ -368,3 +368,44 @@ of <old-version> and <new-version>.  Typical usage::
 The package expects binary kernel .xpaks to be present in ``${BINPKG}``
 subdirectories corresponding to architectures.  ``BINPKG`` defaults
 to ``~/binpkg``.  The kernels are copied into ``DISTDIR``.
+
+
+Patchset generation helpers
+===========================
+Common dependencies: same as mkpatchset_
+
+python-patchset
+---------------
+Makes the ``dev-lang/python`` patchset.  Typical usage::
+
+    python-patchset 3.10.2
+
+Run it in `fork/cpython`_ checkout.  Remember to push the tags
+afterwards.
+
+.. _fork/cpython: https://gitweb.gentoo.org/fork/cpython.git/
+
+pypy-patchset
+---------------
+Makes the ``dev-python/pypy3`` patchset.  Typical usage::
+
+    #             branch  version
+    pypy-patchset 3.9     7.3.9
+
+Run it in `fork/pypy`_ checkout.  Note that the upstream for this
+is the unofficial git mirror `mozillazg/pypy`_.  Remember to push
+the tags afterwards.
+
+.. _fork/pypy: https://gitweb.gentoo.org/fork/pypy.git/
+.. _mozillazg/pypy: https://github.com/mozillazg/pypy/
+
+llvm-patchset
+-------------
+Makes the ``sys-devel/llvm`` & co. patchset.  Typical usage::
+
+    llvm-patchset 14.0.0
+
+Run it in `fork/llvm-project`_ checkout.  Remember to push the tags
+afterwards.
+
+.. _fork/llvm-project: https://gitweb.gentoo.org/fork/llvm-project.git/
