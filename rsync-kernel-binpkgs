@@ -1,0 +1,7 @@
+#!/bin/sh
+set -e -x
+scriptdir=${BASH_SOURCE%/*}
+cd
+rsync -rv --progress --checksum kamaji.arm.dev.gentoo.org:binpkg/. binpkg
+rsync -rv --progress --checksum bogsucker.ppc64.dev.gentoo.org:binpkg/. binpkg
+exec "${scriptdir}"/rsync-binpkgs

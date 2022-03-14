@@ -369,6 +369,20 @@ The package expects binary kernel .xpaks to be present in ``${BINPKG}``
 subdirectories corresponding to architectures.  ``BINPKG`` defaults
 to ``~/binpkg``.  The kernels are copied into ``DISTDIR``.
 
+rsync-binpkgs
+-------------
+Dependencies: rsync
+
+Transfers the ``~/binpkg`` directory tree to dev.gentoo.org
+for distribution.
+
+rsync-kernel-binpkgs
+--------------------
+Dependencies: rsync
+
+Transfers the kernel packages built remotely on devboxes to the local
+``~/binpkg`` tree, then transfers it to dev.gentoo.org for distribution.
+
 
 Patchset generation helpers
 ===========================
