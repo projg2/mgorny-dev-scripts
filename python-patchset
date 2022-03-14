@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 set -e -x
+scriptdir=${BASH_SOURCE%/*}
 ver=${1}
 [[ -n ${ver} ]]
-exec mkpatchset "gentoo-${ver}" "python-gentoo-patches-${ver}" \
+exec "${scriptdir}"/mkpatchset "gentoo-${ver}" "python-gentoo-patches-${ver}" \
 	"v${ver%_p*}" python/

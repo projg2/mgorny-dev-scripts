@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
 set -e -x
+scriptdir=${BASH_SOURCE%/*}
 ver=${1}
 [[ -n ${ver} ]]
 upst=${2:-llvmorg-${ver%-r[0-9]*}}
-exec mkpatchset gentoo-"${ver}" llvm-gentoo-patchset-"${ver}" \
+exec "${scriptdir}"/mkpatchset gentoo-"${ver}" llvm-gentoo-patchset-"${ver}" \
 	"${upst}" llvm/
