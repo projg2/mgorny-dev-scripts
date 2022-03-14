@@ -31,7 +31,7 @@ while [[ ${#} -gt 0 ]]; do
 			ekeyword ~all "${newk}"
 			"${scriptdir}"/copybump "${newk}"
 			${EDITOR:-vim} "${newk}"
-			GENTOO_MIRRORS= repoman manifest
+			GENTOO_MIRRORS= ebuild "${newk}" manifest
 
 			git add Manifest "${newk}"
 			"${scriptdir}"/pkgcommit -sS . -m "Bump to ${new}"

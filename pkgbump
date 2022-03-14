@@ -6,6 +6,6 @@ scriptdir=${BASH_SOURCE%/*}
 cp "${1}" "${2}"
 "${scriptdir}"/copybump "${2}"
 ekeyword ~all "${2}"
-GENTOO_MIRRORS= repoman manifest
+GENTOO_MIRRORS= ebuild "${2}" manifest
 git add Manifest "${2}"
 exec "${scriptdir}"/pkgdiff "${1}" "${2}"

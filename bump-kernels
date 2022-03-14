@@ -20,7 +20,7 @@ while [[ ${#} -gt 0 ]]; do
 			ekeyword ~all "${newk}"
 			"${scriptdir}"/copybump "${newk}"
 			${EDITOR:-vim} "${newk}"
-			GENTOO_MIRRORS= repoman manifest
+			GENTOO_MIRRORS= ebuild "${newk}" manifest
 
 			# do verify-sig
 			if [[ ${pkg} == vanilla-kernel ]]; then
