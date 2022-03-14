@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+# bump dist-kernels -bin variants
+
+set -x -e
+
+scriptdir=${BASH_SOURCE%/*}
+distdir=$(portageq distdir)
+cd "$(git rev-parse --show-toplevel)"
+
+while [[ ${#} -gt 0 ]]; do
+	old=${1}
+	new=${2}
+	[[ ${old} && ${new} ]]
+
+	for pkg in gentoo-kernel-bin; do
+		for arch in amd64 arm64 ppc64le x86; do
+			match=(
+				${BINPKG:-~/binpkg}/${arch}/kernel/sys-kernel/${pkg%-bin}/${pkg%-bin}-${new}*.xpak
+			)
+			[[ ${#match[@]} -eq 1 ]]
+
+			fn=${match##*/}
+			cp "${match}" "${distdir}/${fn/.xpak/.${arch}.xpak}"
+		done
+
+		(
+			cd sys-kernel/${pkg}
+			match=( *${pkg}-${old}.ebuild )
+			newk=${pkg}-${new}.ebuild
+			cp "${match[-1]}" "${newk}"
+			ekeyword ~all "${newk}"
+			"${scriptdir}"/copybump "${newk}"
+			${EDITOR:-vim} "${newk}"
+			GENTOO_MIRRORS= repoman manifest
+
+			git add Manifest "${newk}"
+			"${scriptdir}"/pkgcommit -sS . -m "Bump to ${new}"
+		)
+	done
+
+	shift 2
+done
+
+git diff origin > ${BINPKG_DOCKER:-~/git/binpkg-docker}/local.diff

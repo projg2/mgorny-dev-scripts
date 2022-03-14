@@ -342,3 +342,29 @@ in lockstep.  Takes the old and new values for the last version
 component (for botocore and boto3).  Typical usage::
 
     bump-boto 18 19
+
+bump-kernels
+------------
+Bump dist-kernel packages.  Takes one or more pairs of <old-version>
+and <new-version>.  Typical usage::
+
+    bump-kernels 5.16.14 5.16.15 5.15.28 5.15.29 5.10.105 5.10.106
+
+After the bumps, writes a diff from git origin into
+``${BINPKG_DOCKER}/local.diff``.  ``BINPKG_DOCKER`` defaults to
+``~/git/binpkg-docker`` and should be a checkout of binpkg-docker_ repo.
+It should be used to build binary kernel packages, and then
+bump-kernels-bin_ should be called.
+
+.. _binpkg-docker: https://github.com/mgorny/binpkg-docker/
+
+bump-kernels-bin
+----------------
+Bump binary dist-kernel packages.  Takes one or more pairs
+of <old-version> and <new-version>.  Typical usage::
+
+    bump-kernels-bin 5.16.14 5.16.15 5.15.28 5.15.29 5.10.105 5.10.106
+
+The package expects binary kernel .xpaks to be present in ``${BINPKG}``
+subdirectories corresponding to architectures.  ``BINPKG`` defaults
+to ``~/binpkg``.  The kernels are copied into ``DISTDIR``.
