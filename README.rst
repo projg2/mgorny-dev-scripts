@@ -321,6 +321,15 @@ accepts pkgcheck arguments.  Typical usage::
     stablereq-eshowkw 'dev-python/*'
 
 
+stablereq-find-candidates
+-------------------------
+Dependencies: pkgcheck
+
+Find stabilization candidates for a given maintainer. Typical usage::
+
+    stablereq-find-candidates x11@gentoo.org
+
+
 stablereq-find-pkg-bugs
 -----------------------
 Dependencies: pkgcheck, xdg-utils, perl
