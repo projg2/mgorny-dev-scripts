@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -e
+
+if [[ ${#} -eq 0 ]]; then
+	echo "Usage: $0 <maintainer-email>"
+	exit
+fi
+maint=${1}
+
+cd "$(git rev-parse --show-toplevel)"
+
+echo " days │ category/package:slot"
+echo "──────┼────────────────────────────────────────────────────────────────────────"
+exec \
+	git grep -l "${maint}" '*/*/metadata.xml' |
+	cut -d/ -f1-2 |
+	xargs pkgcheck scan -k StableRequest -R FormatReporter --format " {age:4} │ {category}/{package}-{version}:{slot}" |
+	sort -k2
