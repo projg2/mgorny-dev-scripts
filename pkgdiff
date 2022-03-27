@@ -3,6 +3,19 @@
 
 set -e -x
 
+mode=
+while [[ ${#} -gt 0 ]]; do
+	case ${1} in
+		--build-system|-b)
+			mode=build-system
+			;;
+		*)
+			break
+			;;
+	esac
+	shift
+done
+
 get_category() {
 	local dir=.
 	[[ ${1} != */* ]] || dir=${1%/*}
@@ -22,4 +35,18 @@ ebuild "${1}" unpack
 ebuild "${2}" unpack
 s1=$(sed -nr 's/^declare -x S="(.*)"/\1/p' "${PORTAGE_TMPDIR}"/portage/${cat1}/${fn1%.ebuild}/temp/environment)
 s2=$(sed -nr 's/^declare -x S="(.*)"/\1/p' "${PORTAGE_TMPDIR}"/portage/${cat2}/${fn2%.ebuild}/temp/environment)
-diff --color=always --strip-trailing-cr -dupNr "${s1}" "${s2}" | ${PAGER:-less}
+
+{
+	case "${mode}" in
+		build-system)
+			find "${s1}" "${s2}" -type f \
+				! \( \
+						-name 'configure.ac' -o \
+						-name 'meson.build' -o \
+						-name 'meson_options.txt' -o \
+						-name '*.cmake' -o \
+						-name 'CMakeLists.txt' \
+				\) -printf "%f\n"
+			;;
+	esac
+} | diff --color=always --strip-trailing-cr -X - -dupNr "${s1}" "${s2}" | ${PAGER:-less}
