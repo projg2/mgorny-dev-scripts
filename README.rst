@@ -81,15 +81,15 @@ pkgdiff
 -------
 Dependencies: portage
 
-Calls `ebuild(1)` to extract archives for two specified ebuilds,
+Calls ``ebuild(1)`` to extract archives for two specified ebuilds,
 and then diffs the result.  Does not handle ebuilds unpacking multiple
 directories into workdir or package.env PORTAGE_TMPDIR overrides.
 Typical usage::
 
     pkgdiff foo-1.0.ebuild foo-1.1.ebuild
 
-With the `--build-system`/`-b` argument, it will attempt to show a diff of
-only the build system files.
+With the ``--build-system``/``-b`` argument, it will attempt to show a diff of
+only the build system files::
 
     pkgdiff --build-system foo-1.0.ebuild foo-1.1.ebuild
 
