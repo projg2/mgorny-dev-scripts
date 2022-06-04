@@ -42,6 +42,7 @@ s2=$(sed -nr 's/^declare -x S="(.*)"/\1/p' "${PORTAGE_TMPDIR}"/portage/${cat2}/$
 			find "${s1}" "${s2}" -type f \
 				! \( \
 						-name 'configure.ac' -o \
+						-name '*.m4' -o \
 						-name 'meson.build' -o \
 						-name 'meson_options.txt' -o \
 						-name '*.cmake' -o \
