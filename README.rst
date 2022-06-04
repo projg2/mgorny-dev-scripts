@@ -463,6 +463,7 @@ Makes the ``sys-devel/llvm`` & co. patchset.  Typical usage::
     llvm-patchset 14.0.0
 
 Run it in `fork/llvm-project`_ checkout.  Remember to push the tags
-afterwards.
+afterwards. Read `LLVM/Releases`_ on the wiki for more details.
 
 .. _fork/llvm-project: https://gitweb.gentoo.org/fork/llvm-project.git/
+.. _LLVM/Releases: https://wiki.gentoo.org/wiki/Project:LLVM/Releases
