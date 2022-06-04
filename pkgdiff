@@ -52,6 +52,8 @@ s2=$(sed -nr 's/^declare -x S="(.*)"/\1/p' "${PORTAGE_TMPDIR}"/portage/${cat2}/$
 						-name 'pyproject.toml' \
 						-name 'Makefile.PL' -o \
 						-name 'NEWS*' -o \
+						-name 'Gemfile' -o \
+						-name 'Gemfile.lock'
 				\) -printf "%f\n"
 			;;
 	esac
