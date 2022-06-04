@@ -56,7 +56,9 @@ s2=$(sed -nr 's/^declare -x S="(.*)"/\1/p' "${PORTAGE_TMPDIR}"/portage/${cat2}/$
 						-name 'Gemfile.lock' -o \
 						-name '*.opam' -o \
 						-name 'dune' -o \
-						-name 'dune-project'
+						-name 'dune-project' -o \
+						-name 'LICENSE*' -o \
+						-name 'COPYING*'
 				\) -printf "%f\n"
 			;;
 	esac
