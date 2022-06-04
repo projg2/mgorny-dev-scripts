@@ -399,7 +399,10 @@ After the bumps, writes a diff from git origin into
 It should be used to build binary kernel packages, and then
 bump-kernels-bin_ should be called.
 
+Read `Distribution_Kernel/Bumping_kernels`_ on the wiki for more details.
+
 .. _binpkg-docker: https://github.com/mgorny/binpkg-docker/
+.. _Distribution_Kernel/Bumping_kernels: https://wiki.gentoo.org/wiki/Project:Distribution_Kernel/Bumping_kernels
 
 bump-kernels-bin
 ----------------
