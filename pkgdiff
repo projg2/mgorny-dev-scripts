@@ -29,7 +29,7 @@ cat2=$(get_category "${2}")
 fn1=${1##*/}
 fn2=${2##*/}
 
-export PORTAGE_TMPDIR=/tmp/pkgdiff
+export PORTAGE_TMPDIR=$(mktemp --tmpdir -d pkgdiff.XXXXXX)
 mkdir -p "${PORTAGE_TMPDIR}"
 ebuild "${1}" unpack
 ebuild "${2}" unpack
