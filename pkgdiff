@@ -53,7 +53,10 @@ s2=$(sed -nr 's/^declare -x S="(.*)"/\1/p' "${PORTAGE_TMPDIR}"/portage/${cat2}/$
 						-name 'Makefile.PL' -o \
 						-name 'NEWS*' -o \
 						-name 'Gemfile' -o \
-						-name 'Gemfile.lock'
+						-name 'Gemfile.lock' -o \
+						-name '*.opam' -o \
+						-name 'dune' -o \
+						-name 'dune-project'
 				\) -printf "%f\n"
 			;;
 	esac
