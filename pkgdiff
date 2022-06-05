@@ -60,7 +60,9 @@ s2=$(sed -nr 's/^declare -x S="(.*)"/\1/p' "${PORTAGE_TMPDIR}"/portage/${cat2}/$
 						-name 'LICENSE*' -o \
 						-name 'COPYING*' -o \
 						-name 'SConscript' -o \
-						-name 'SConstruct'
+						-name 'SConstruct' -o \
+						-name 'Cargo.lock' -o \
+						-name 'Cargo.toml'
 				\) -printf "%f\n"
 			;;
 	esac
