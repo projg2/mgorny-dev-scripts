@@ -62,7 +62,7 @@ s2=$(sed -nr 's/^declare -x S="(.*)"/\1/p' "${PORTAGE_TMPDIR}"/portage/${cat2}/$
 						-name 'SConscript' -o \
 						-name 'SConstruct' -o \
 						-name 'Cargo.lock' -o \
-						-name 'Cargo.toml'
+						-name 'Cargo.toml' \
 				\) -printf "%f\n"
 			;;
 	esac
