@@ -36,6 +36,9 @@ ebuild "${2}" unpack
 s1=$(sed -nr 's/^declare -x S="(.*)"/\1/p' "${PORTAGE_TMPDIR}"/portage/${cat1}/${fn1%.ebuild}/temp/environment)
 s2=$(sed -nr 's/^declare -x S="(.*)"/\1/p' "${PORTAGE_TMPDIR}"/portage/${cat2}/${fn2%.ebuild}/temp/environment)
 
+[[ -d ${s1} ]]
+[[ -d ${s2} ]]
+
 {
 	case "${mode}" in
 		build-system)
