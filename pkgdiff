@@ -54,6 +54,10 @@ s2=$(sed -nr 's/^declare -x S="(.*)"/\1/p' "${PORTAGE_TMPDIR}"/portage/${cat2}/$
 						-name 'setup.cfg' -o \
 						-name 'pyproject.toml' \
 						-name 'Makefile.PL' -o \
+						-name 'Build.PL' -o \
+						-name 'dist.ini' -o \
+						-name 'META.yml' -o \
+						-name 'META.json' -o \
 						-name 'NEWS*' -o \
 						-name 'Gemfile' -o \
 						-name 'Gemfile.lock' -o \
