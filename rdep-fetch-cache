@@ -1,6 +1,7 @@
 #!/bin/sh
 # fetch cache for rdep
 
-cd /tmp &&
+mkdir -p "${TMPDIR:-/tmp}"/mgorny-dev-scripts &&
+cd "${TMPDIR:-/tmp}"/mgorny-dev-scripts &&
 exec wget -O - https://qa-reports.gentoo.org/output/genrdeps/rdeps.tar.xz |
 	tar -xJ

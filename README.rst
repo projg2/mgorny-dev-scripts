@@ -88,6 +88,9 @@ Typical usage::
 
     pkgdiff foo-1.0.ebuild foo-1.1.ebuild
 
+The data is extracted into ``${TMPDIR:-/tmp}/mgorny-dev-scripts/portage``
+to avoid hitting collisions with other Portage builds.
+
 With the ``--build-system``/``-b`` argument, it will attempt to show a diff of
 only the build system files::
 
@@ -177,7 +180,7 @@ The data is fetched from qa-reports.g.o.  Typical usage::
     rdep app-foo/bar app-foo/frobnicate
 
 If you plan to use it on a larger number of packages, you can prefetch
-all data and have it put into ``/tmp``::
+all data and have it put into ``${TMPDIR:-/tmp}/mgorny-dev-scripts``::
 
     rdep-fetch-cache
 

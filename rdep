@@ -2,8 +2,8 @@
 # print revdeps of packages specified on command-line
 
 fetch() {
-	if [ -d /tmp/${1}index ]; then
-		cat /tmp/${1}index/${pkg}
+	if [ -d "${TMPDIR:-/tmp}"/mgorny-dev-scripts/${1}index ]; then
+		cat "${TMPDIR:-/tmp}"/mgorny-dev-scripts/${1}index/${pkg}
 	else
 		wget -q -O - https://qa-reports.gentoo.org/output/genrdeps/${1}index/${pkg}
 	fi
