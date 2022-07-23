@@ -62,6 +62,7 @@ s2=$(sed -nr 's/^declare -x S="(.*)"/\1/p' "${PORTAGE_TMPDIR}"/portage/${cat2}/$
 						-name 'CHANGES*' -o \
 						-name 'Gemfile' -o \
 						-name 'Gemfile.lock' -o \
+						-name 'META' -o \
 						-name '*.opam' -o \
 						-name 'opam' -o \
 						-name 'dune' -o \
