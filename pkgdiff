@@ -76,4 +76,4 @@ s2=$(sed -nr 's/^declare -x S="(.*)"/\1/p' "${PORTAGE_TMPDIR}"/portage/${cat2}/$
 				\) -printf "%f\n"
 			;;
 	esac
-} | diff --color=always --exclude=".git" --strip-trailing-cr -X - -dupNr "${s1}" "${s2}" | ${PAGER:-less}
+} | diff --color=always --exclude=".git" --strip-trailing-cr -X - -dupNr "${s1}" "${s2}" | ${PAGER:-less -R}
