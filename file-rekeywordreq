@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # open a browser to file rekeywordreq for package(s) ${*}
 
 set -e

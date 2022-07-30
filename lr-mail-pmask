@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # open a mail client with template last rites mail based on current diff
 
 set -e

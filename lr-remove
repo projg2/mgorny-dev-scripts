@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # remove the specified package, opening all relevant bugs in the browser
 # and grepping profiles for stale references
 # note: package.mask entry must be removed first!

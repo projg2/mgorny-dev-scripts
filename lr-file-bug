@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # open a browser with template for filing removal bug for pkg(s) ${*}
 
 set -e

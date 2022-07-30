@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # run bash inside each package directory specified
 
 set -e

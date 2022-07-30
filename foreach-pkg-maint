@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # run specified command $2+ for each package maintained by $1
 # (usually combined with if-multiple-versions)
 

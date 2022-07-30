@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # diff sources unpacked by two ebuilds (works only for simple ebuilds)
 
 set -e -x

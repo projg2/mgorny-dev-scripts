@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # run specified command for each git repository found in current dir
 
 while read -u 4 -d '' -r f; do

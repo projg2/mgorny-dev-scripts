@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # commit the new entry to package.mask
 
 set -e
