@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env
 # create a patchset tarball and upload it to dev.g.o
 
 set -e -x
