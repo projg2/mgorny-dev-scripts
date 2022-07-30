@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 # run specified command if there are more than one ebuild versions
 # in current dir
 
