@@ -5,6 +5,6 @@ if [ ${#} -eq 0 ]; then
 	set -- $(pkg)
 fi
 
-rdep "${@}" | grep -v '^\[B' |
-	xargs qatom -C -F '%{CATEGORY}/%{PN}' 2>/dev/null |
+# add = to make it a proper atom, remove ":usedeps" and strip [B] lines
+rdep "${@}" 2>/dev/null | sed -n -e 's:^:=:' -e 's@:.*$@@' -e '/^=[^\[]/p' |
 	sort -u | xargs pkgcheck scan -c VisibilityCheck nonexist/nonexist
