@@ -60,7 +60,7 @@ Package maintenance helpers
 
 check-revdep
 ------------
-Dependecies: pkgcore
+Dependecies: pkgcore, portage-utils
 
 Runs a visibility (dependency) check for all reverse dependencies
 of the specified packages (or the current package, if none specified).
