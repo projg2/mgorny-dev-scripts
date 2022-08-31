@@ -40,4 +40,4 @@ bump_pkg() {
 
 bump_pkg dev-python/botocore 1.${BOTOCORE_MINOR} ${OLDV} ${NEWV}
 bump_pkg dev-python/boto3 1.${BOTO3_MINOR} ${OLDV} ${NEWV}
-bump_pkg app-admin/awscli 1.${AWSCLI_MINOR} ${OLDV} ${NEWV}
+bump_pkg app-admin/awscli 1.${AWSCLI_MINOR} $(( OLDV + 1 )) $(( NEWV + 1 ))
