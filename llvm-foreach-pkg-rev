@@ -13,13 +13,16 @@ packages=(
 	sys-libs/compiler-rt-sanitizers
 	sys-libs/compiler-rt
 	dev-util/lldb
+	sys-devel/lld-toolchain-symlinks
 	sys-devel/lld
 	dev-python/lit
 	dev-python/clang-python
+	sys-devel/clang-toolchain-symlinks
 	sys-devel/clang
 	sys-devel/clang-common
 	dev-ml/llvm-ocaml
 	sys-devel/llvmgold
+	sys-devel/llvm-toolchain-symlinks
 	sys-devel/llvm
 	sys-devel/llvm-common
 )

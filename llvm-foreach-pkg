@@ -6,13 +6,16 @@ cd "$(git rev-parse --show-toplevel)" || exit 1
 packages=(
 	sys-devel/llvm-common
 	sys-devel/llvm
+	sys-devel/llvm-toolchain-symlinks
 	sys-devel/llvmgold
 	dev-ml/llvm-ocaml
 	sys-devel/clang-common
 	sys-devel/clang
+	sys-devel/clang-toolchain-symlinks
 	dev-python/clang-python
 	dev-python/lit
 	sys-devel/lld
+	sys-devel/lld-toolchain-symlinks
 	dev-util/lldb
 	sys-libs/compiler-rt
 	sys-libs/compiler-rt-sanitizers
