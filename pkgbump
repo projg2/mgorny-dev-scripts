@@ -7,5 +7,6 @@ cp "${1}" "${2}"
 "${scriptdir}"/copybump "${2}"
 ekeyword ~all "${2}"
 GENTOO_MIRRORS= ebuild "${2}" manifest
-git add Manifest "${2}"
+[[ ! -f Manifest ]] || git add Manifest
+git add "${2}"
 exec "${scriptdir}"/pkgdiff "${1}" "${2}"
