@@ -15,12 +15,12 @@ while [[ ${#} -gt 0 ]]; do
 	for pkg in gentoo-kernel-bin; do
 		for arch in amd64 arm64 ppc64le x86; do
 			match=(
-				${BINPKG:-~/binpkg}/${arch}/kernel/sys-kernel/${pkg%-bin}/${pkg%-bin}-${new}*.xpak
+				${BINPKG:-~/binpkg}/${arch}/kernel/sys-kernel/${pkg%-bin}/${pkg%-bin}-${new}*.gpkg.tar
 			)
 			[[ ${#match[@]} -eq 1 ]]
 
 			fn=${match##*/}
-			cp "${match}" "${distdir}/${fn/.xpak/.${arch}.xpak}"
+			cp "${match}" "${distdir}/${fn/.gpkg.tar/.${arch}.gpkg.tar}"
 		done
 
 		(
