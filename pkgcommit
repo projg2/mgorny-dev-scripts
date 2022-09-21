@@ -20,7 +20,7 @@ set -e -x
 
 tmpf=$(mktemp)
 echo "$(pkg): ${msg}" > "${tmpf}"
-[[ ${msg} ]] || "${EDITOR:-vim}" "${tmpf}"
+[[ ${msg} ]] || ${EDITOR:-vim} "${tmpf}"
 if [[ -s ${tmpf} ]]; then
 	git commit -F "${tmpf}" "${args[@]}"
 fi
