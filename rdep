@@ -18,4 +18,6 @@ for pkg; do
 	fetch b
 	echo "== pdep of ${pkg} ==" >&2
 	fetch p
+	echo "== idep of ${pkg} ==" >&2
+	fetch i
 done
