@@ -2,6 +2,6 @@
 # grab stabilization candidates and pipe a list of 'file-stablereq' commands
 # into an editor
 
-pkgcheck scan -c StableRequestCheck -R FormatReporter \
+pkgcheck scan ${PKGCHECK_ARGS} -c StableRequestCheck -R FormatReporter \
 	--format 'file-stablereq {category}/{package}-{version}  # {desc}' "${@}" |
 	sort | ${EDITOR:-vim} -
