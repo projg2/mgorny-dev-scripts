@@ -15,5 +15,5 @@ echo "──────┼─────────────────�
 exec \
 	git grep -l "${maint}" '*/*/metadata.xml' |
 	cut -d/ -f1-2 |
-	xargs pkgcheck scan -k StableRequest -R FormatReporter --format " {age:4} │ {category}/{package}-{version}:{slot}" |
+	xargs pkgcheck scan ${PKGCHECK_ARGS} -k StableRequest -R FormatReporter --format " {age:4} │ {category}/{package}-{version}:{slot}" |
 	sort -k2
