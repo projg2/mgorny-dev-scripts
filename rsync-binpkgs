@@ -1,4 +1,0 @@
-#!/bin/sh
-set -e -x
-cd
-rsync -rv --progress binpkg/. --delete --checksum dev.gentoo.org:public_html/binpkg/
