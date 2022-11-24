@@ -16,7 +16,7 @@ pkg="${pkg[*]}"
 bugno=$(git diff -U0 profiles/package.mask |
 	sed -n -e 's/^+#.*Removal.* Bug #\([0-9]\+\)./\1/p')
 
-msg="package.mask: Last rite ${pkg// /, }${bugno:+
+msg="profiles/package.mask: Last rite ${pkg// /, }${bugno:+
 
 Bug: https://bugs.gentoo.org/${bugno}}"
 
