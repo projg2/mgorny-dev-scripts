@@ -172,7 +172,7 @@ are ignored.  See example above.
 
 rdep
 ----
-Dependencies: wget
+Dependencies: wget, optionally tar, xz and lz4
 
 Accepts one or more cat/pns and prints their reverse dependencies.
 The data is fetched from qa-reports.g.o.  Typical usage::
@@ -183,6 +183,11 @@ If you plan to use it on a larger number of packages, you can prefetch
 all data and have it put into ``${TMPDIR:-/tmp}/mgorny-dev-scripts``::
 
     rdep-fetch-cache
+
+If lz4 is installed, the cache will be saved as a ``.tar.lz4`` archive
+for space- and performance-efficient lookup; otherwise it will be saved
+as uncompressed ``.tar``.  If ``bsdtar`` is installed, it will be used
+instead of ``tar`` as it supports fast reads.
 
 
 Bugzilla helpers

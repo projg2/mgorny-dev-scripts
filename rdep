@@ -1,12 +1,36 @@
 #!/bin/sh
 # print revdeps of packages specified on command-line
 
-fetch() {
-	if [ -d "${TMPDIR:-/tmp}"/mgorny-dev-scripts/${1}index ]; then
-		cat "${TMPDIR:-/tmp}"/mgorny-dev-scripts/${1}index/${pkg}
-	else
-		wget -q -O - https://qa-reports.gentoo.org/output/genrdeps/${1}index/${pkg}
+# bsdtar is faster than GNU tar
+if command -v bsdtar >/dev/null; then
+	TAR="bsdtar -xqOf"
+else
+	TAR="tar -xOf"
+fi
+
+# find the best cache available
+CACHEDIR=${TMPDIR:-/tmp}/mgorny-dev-scripts
+GET=
+if [ -d "${CACHEDIR}" ]; then
+	cd "${CACHEDIR}" || exit 1
+	if [ -f rdeps.tar.lz4 ]; then
+		GET="${TAR} rdeps.tar.lz4 "
+	elif [ -f rdeps.tar ]; then
+		GET="${TAR} rdeps.tar "
+	elif [ -d rindex ]; then
+		GET="cat "
 	fi
+fi
+
+# use wget if no cache available
+if [ -z "${GET}" ]; then
+	echo "[Fetching from qa-reports, please consider running rdep-fetch-cache]" >&2
+	GET="wget -q -O - https://qa-reports.gentoo.org/output/genrdeps/"
+fi
+
+
+fetch() {
+	${GET}${1}index/${pkg}
 }
 
 for pkg; do
