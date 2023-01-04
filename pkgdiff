@@ -3,9 +3,12 @@
 
 set -e -x
 
-mode=
+mode=default
 while [[ ${#} -gt 0 ]]; do
 	case ${1} in
+		--all|-a)
+			mode=
+			;;
 		--build-system|-b)
 			mode=build-system
 			;;
@@ -73,6 +76,12 @@ s2=$(sed -nr 's/^declare -x S="(.*)"/\1/p' "${PORTAGE_TMPDIR}"/portage/${cat2}/$
 						-name 'SConstruct' -o \
 						-name 'Cargo.lock' -o \
 						-name 'Cargo.toml' \
+				\) -printf "%f\n"
+			;;
+		default)
+			find "${s1}" "${s2}" -type f \
+				\( \
+					-name 'searchindex.js' \
 				\) -printf "%f\n"
 			;;
 	esac
