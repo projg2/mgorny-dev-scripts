@@ -33,6 +33,7 @@ fn1=${1##*/}
 fn2=${2##*/}
 
 export PORTAGE_TMPDIR="${TMPDIR:-/tmp}"/mgorny-dev-scripts
+export USE="${USE} test"
 mkdir -p "${PORTAGE_TMPDIR}"
 ebuild "${1}" unpack
 ebuild "${2}" unpack
