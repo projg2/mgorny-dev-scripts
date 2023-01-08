@@ -82,6 +82,7 @@ s2=$(sed -nr 's/^declare -x S="(.*)"/\1/p' "${PORTAGE_TMPDIR}"/portage/${cat2}/$
 		default)
 			find "${s1}" "${s2}" -type f \
 				\( \
+					-name '*.min.*' -o \
 					-name 'searchindex.js' \
 				\) -printf "%f\n"
 			;;
