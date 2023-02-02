@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# check whether ensurepip-* packages are up-to-date
+
+REPO=$(git rev-parse --show-toplevel)
+PKGS=( pip setuptools )
+
+declare -A VERSIONS
+while read -r PKG; do
+	PKG=${PKG#dev-python/}
+	NAME=${PKG%-*}
+	VERSION=${PKG##*-}
+	VERSIONS[${NAME}]=${VERSION}
+done < <(
+	pquery -q -r "${REPO}" --max "${PKGS[@]/#/dev-python\/}" \
+		"${PKGS[@]/#/dev-python\/ensurepip-}"
+)
+
+for PKG in "${PKGS[@]}"; do
+	ENSUREPIP="${VERSIONS[ensurepip-${PKG}]}"
+	ACTUAL="${VERSIONS[${PKG}]}"
+
+	if [[ ${ENSUREPIP} != ${ACTUAL} ]]; then
+		echo "Ensurepip mismatch found!" >&2
+		echo "  dev-python/ensurepip-${PKG}: ${ENSUREPIP}" >&2
+		echo "            dev-python/${PKG}: ${ACTUAL}" >&2
+	fi
+done

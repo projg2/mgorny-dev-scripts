@@ -115,6 +115,13 @@ to dev.gentoo.org.  Typical usage::
     #          tag          archive-name                upstream dgo-subdir
     mkpatchset gentoo-3.9.8 python-gentoo-patches-3.9.8 v3.9.8   python/
 
+check-ensurepip
+---------------
+Dependencies: git, pkgcore
+
+Check whether ``dev-python/ensurepip-*`` packages are up-to-date.
+Useful for a pre-push hook.
+
 
 Package tree iteration helpers
 ==============================
