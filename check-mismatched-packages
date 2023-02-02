@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+# check whether packages that should be kept in sync are up-to-date
+
+REPO=$(git rev-parse --show-toplevel)
+PKGS=(
+	dev-python/ensurepip-pip:0=dev-python/pip:0
+	dev-python/ensurepip-setuptools:0=dev-python/setuptools:0
+	dev-python/python-docs:2.7=dev-lang/python:2.7
+	dev-python/python-docs:3.8=dev-lang/python:3.8
+	dev-python/python-docs:3.9=dev-lang/python:3.9
+	dev-python/python-docs:3.10=dev-lang/python:3.10
+	dev-python/python-docs:3.11=dev-lang/python:3.11
+)
+
+declare -A VERSIONS
+while read -r PKG; do
+	SLOT=${PKG#*:}
+	PKG=${PKG%:*}
+	PKG=${PKG%-r[0-9]*}
+	NAME=${PKG%-*}
+	VERSION=${PKG##*-}
+	VERSION=${VERSION%_p*}
+	VERSIONS[${NAME}:${SLOT}]=${VERSION}
+done < <(
+	pquery -q -r "${REPO}" --slot "${PKGS[@]%=*}" "${PKGS[@]#*=}"
+)
+
+RET=0
+for PKG in "${PKGS[@]}"; do
+	A=${PKG%=*}
+	B=${PKG#*=}
+	AV="${VERSIONS[${A}]}"
+	BV="${VERSIONS[${B}]}"
+
+	if [[ ${AV} != ${BV} ]]; then
+		echo "Package version mismatch found!" >&2
+		echo "  ${A}: ${AV}" >&2
+		echo "  ${B}: ${BV}" >&2
+		RET=1
+	fi
+done
+
+exit "${RET}"
