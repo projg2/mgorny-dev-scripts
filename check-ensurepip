@@ -15,6 +15,7 @@ done < <(
 		"${PKGS[@]/#/dev-python\/ensurepip-}"
 )
 
+RET=0
 for PKG in "${PKGS[@]}"; do
 	ENSUREPIP="${VERSIONS[ensurepip-${PKG}]}"
 	ACTUAL="${VERSIONS[${PKG}]}"
@@ -23,5 +24,8 @@ for PKG in "${PKGS[@]}"; do
 		echo "Ensurepip mismatch found!" >&2
 		echo "  dev-python/ensurepip-${PKG}: ${ENSUREPIP}" >&2
 		echo "            dev-python/${PKG}: ${ACTUAL}" >&2
+		RET=1
 	fi
 done
+
+exit "${RET}"
