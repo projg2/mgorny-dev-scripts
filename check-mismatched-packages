@@ -5,6 +5,7 @@ REPO=$(git rev-parse --show-toplevel)
 PKGS=(
 	dev-python/ensurepip-pip:0=dev-python/pip:0
 	dev-python/ensurepip-setuptools:0=dev-python/setuptools:0
+	dev-python/ensurepip-wheel:0=dev-python/wheel:0
 	dev-python/python-docs:2.7=dev-lang/python:2.7
 	dev-python/python-docs:3.8=dev-lang/python:3.8
 	dev-python/python-docs:3.9=dev-lang/python:3.9
