@@ -77,8 +77,8 @@ usage::
 Uses rdep_ command.  You may want to call ``rdep-fetch-cache`` if you
 plan on using it multiple times.
 
-pkgdiff
--------
+pkgdiff-mg
+----------
 Dependencies: portage
 
 Calls ``ebuild(1)`` to extract archives for two specified ebuilds,
@@ -86,7 +86,7 @@ and then diffs the result.  Does not handle ebuilds unpacking multiple
 directories into workdir or package.env PORTAGE_TMPDIR overrides.
 Typical usage::
 
-    pkgdiff foo-1.0.ebuild foo-1.1.ebuild
+    pkgdiff-mg foo-1.0.ebuild foo-1.1.ebuild
 
 The data is extracted into ``${TMPDIR:-/tmp}/mgorny-dev-scripts/portage``
 to avoid hitting collisions with other Portage builds.
@@ -94,14 +94,14 @@ to avoid hitting collisions with other Portage builds.
 With the ``--build-system``/``-b`` argument, it will attempt to show a diff of
 only the build system files::
 
-    pkgdiff --build-system foo-1.0.ebuild foo-1.1.ebuild
+    pkgdiff-mg --build-system foo-1.0.ebuild foo-1.1.ebuild
 
 pkgbump
 -------
 Dependencies: portage, gentoolkit (ekeyword), git
 
 Copies ebuild for a version bump, dropping keywords, updating Manifest
-and running pkgdiff_ to compare archives.  Typical usage::
+and running pkgdiff-mg_ to compare archives.  Typical usage::
 
     pkgbump foo-1.0.ebuild foo-1.1.ebuild
 

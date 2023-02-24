@@ -9,4 +9,4 @@ ekeyword ~all "${2}"
 GENTOO_MIRRORS= ebuild "${2}" manifest
 [[ ! -f Manifest ]] || git add Manifest
 git add "${2}"
-exec "${scriptdir}"/pkgdiff "${1}" "${2}"
+exec "${scriptdir}"/pkgdiff-mg "${1}" "${2}"
