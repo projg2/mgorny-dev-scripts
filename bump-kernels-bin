@@ -40,5 +40,3 @@ while [[ ${#} -gt 0 ]]; do
 
 	shift 2
 done
-
-git diff origin > ${BINPKG_DOCKER:-~/git/binpkg-docker}/local.diff
