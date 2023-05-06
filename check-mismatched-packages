@@ -6,11 +6,11 @@ PKGS=(
 	dev-python/ensurepip-pip:0=dev-python/pip:0
 	dev-python/ensurepip-setuptools:0=dev-python/setuptools:0
 	dev-python/ensurepip-wheel:0=dev-python/wheel:0
-	dev-python/python-docs:2.7=dev-lang/python:2.7
-	dev-python/python-docs:3.8=dev-lang/python:3.8
-	dev-python/python-docs:3.9=dev-lang/python:3.9
-	dev-python/python-docs:3.10=dev-lang/python:3.10
-	dev-python/python-docs:3.11=dev-lang/python:3.11
+	app-doc/python-docs:2.7=dev-lang/python:2.7
+	app-doc/python-docs:3.8=dev-lang/python:3.8
+	app-doc/python-docs:3.9=dev-lang/python:3.9
+	app-doc/python-docs:3.10=dev-lang/python:3.10
+	app-doc/python-docs:3.11=dev-lang/python:3.11
 )
 
 declare -A VERSIONS
