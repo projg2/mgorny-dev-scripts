@@ -7,7 +7,7 @@ cp "${1}" "${2}"
 "${scriptdir}"/copybump "${2}"
 ekeyword ~all "${2}"
 if grep -q "^PYTHON_COMPAT" "${2}" && type -P gpy-impl &>/dev/null; then
-	gpy-impl "${2}" -python3_{8..9}
+	gpy-impl "${2}" -python3_{8..9} || :
 fi
 GENTOO_MIRRORS= ebuild "${2}" manifest
 [[ ! -f Manifest ]] || git add Manifest
