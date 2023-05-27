@@ -32,7 +32,13 @@ cat2=$(get_category "${2}")
 fn1=${1##*/}
 fn2=${2##*/}
 
-export PORTAGE_TMPDIR="${TMPDIR:-/tmp}"/mgorny-dev-scripts
+DEFAULT_TMPDIR=/tmp
+if [[ -d /run/systemd/system ]]; then
+	# System booted via systemd, which automatically cleans up stale
+	# files in /var/tmp.
+	DEFAULT_TMPDIR=/var/tmp
+fi
+export PORTAGE_TMPDIR="${TMPDIR:-${DEFAULT_TMPDIR}}"/mgorny-dev-scripts
 export USE="${USE} test"
 mkdir -p "${PORTAGE_TMPDIR}"
 ebuild "${1}" unpack
