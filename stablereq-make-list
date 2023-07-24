@@ -3,5 +3,5 @@
 # into an editor
 
 pkgcheck scan ${PKGCHECK_ARGS} -c StableRequestCheck -R FormatReporter \
-	--format 'file-stablereq {category}/{package}-{version}  # {desc}' "${@}" |
+	--format '={category}/{package}-{version}' "${@}" |
 	sort | ${EDITOR:-vim} -
