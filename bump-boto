@@ -13,31 +13,27 @@ if ! [[ ${OLDV} && ${NEWV} ]]; then
 	exit 1
 fi
 
-BOTOCORE_EBUILDS=( dev-python/botocore/*.ebuild )
-NEWEST_BOTOCORE=${BOTOCORE_EBUILDS[-1]}
-if [[ ${NEWEST_BOTOCORE} == *9999* ]]; then
-	NEWEST_BOTOCORE=${BOTOCORE_EBUILDS[-2]}
-fi
-NEWEST_BOTOCORE=${NEWEST_BOTOCORE%.*.ebuild}
-
-BOTOCORE_MINOR=${NEWEST_BOTOCORE##*.}
-BOTO3_MINOR=$(( BOTOCORE_MINOR - 3 ))
-AWSCLI_MINOR=$(( BOTOCORE_MINOR - 2 ))
-
 bump_pkg() {
 	local pkg=${1}
-	local pn=${pkg#*/}
-	local oldv=${2}.${3}
-	local newv=${2}.${4}
+	local oldv=${2}
+	local newv=${3}
 
 	(
 		cd "${pkg}"
-		"${scriptdir}"/pkgbump "${pn}-${oldv}.ebuild" "${pn}-${newv}.ebuild"
-		${EDITOR:-vim} "${pn}-${newv}.ebuild"
-		"${scriptdir}"/pkgcommit . -sS -m "Bump to ${newv}"
+
+		local ebuilds=( *.ebuild )
+		local newest=${ebuilds[-1]}
+		if [[ ${newest} == *9999* ]]; then
+			newest=${ebuilds[-2]}
+		fi
+		newest=${newest%.*.ebuild}
+
+		"${scriptdir}"/pkgbump "${newest}.${oldv}.ebuild" "${newest}.${newv}.ebuild"
+		${EDITOR:-vim} "${newest}.${newv}.ebuild"
+		"${scriptdir}"/pkgcommit . -sS -m "Bump to ${newest##*-}.${newv}"
 	)
 }
 
-bump_pkg dev-python/botocore 1.${BOTOCORE_MINOR} ${OLDV} ${NEWV}
-bump_pkg dev-python/boto3 1.${BOTO3_MINOR} ${OLDV} ${NEWV}
-bump_pkg app-admin/awscli 1.${AWSCLI_MINOR} ${OLDV} ${NEWV}
+bump_pkg dev-python/botocore ${OLDV} ${NEWV}
+bump_pkg dev-python/boto3 ${OLDV} ${NEWV}
+bump_pkg app-admin/awscli ${OLDV} ${NEWV}
