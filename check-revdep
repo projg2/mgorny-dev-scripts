@@ -7,4 +7,5 @@ fi
 
 rdep "${@}" | grep -v '^\[B' |
 	xargs qatom -C -F '%{CATEGORY}/%{PN}' 2>/dev/null |
-	sort -u | xargs pkgcheck scan -c VisibilityCheck nonexist/nonexist
+	sort -u |
+	xargs pkgcheck scan -c VisibilityCheck --exit error nonexist/nonexist
