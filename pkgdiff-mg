@@ -36,6 +36,8 @@ export PORTAGE_TMPDIR="${TMPDIR:-/tmp}"/mgorny-dev-scripts
 export USE="${USE} test"
 # use noauto to skip pkg_setup
 export FEATURES="${FEATURES} noauto"
+# tell ebuilds we don't want everything
+export PKGBUMPING=1
 mkdir -p "${PORTAGE_TMPDIR}"
 ebuild "${1}" unpack
 ebuild "${2}" unpack

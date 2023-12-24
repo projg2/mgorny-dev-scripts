@@ -9,6 +9,8 @@ ekeyword ~all "${2}"
 if grep -q "^PYTHON_COMPAT" "${2}" && type -P gpy-impl &>/dev/null; then
 	gpy-impl "${2}" -python3_{8..9} || :
 fi
+# tell ebuilds we don't want everything
+export PKGBUMPING=1
 GENTOO_MIRRORS= ebuild "${2}" manifest
 [[ ! -f Manifest ]] || git add Manifest
 git add "${2}"
