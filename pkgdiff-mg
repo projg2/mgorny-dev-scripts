@@ -31,16 +31,17 @@ cat1=$(get_category "${1}")
 cat2=$(get_category "${2}")
 fn1=${1##*/}
 fn2=${2##*/}
+ver1=$(patom -F '%{fullver}' "=${cat1}/${fn1%.ebuild}")
+ver2=$(patom -F '%{fullver}' "=${cat2}/${fn2%.ebuild}")
 
 export PORTAGE_TMPDIR="${TMPDIR:-/tmp}"/mgorny-dev-scripts
 export USE="${USE} test"
 # use noauto to skip pkg_setup
 export FEATURES="${FEATURES} noauto"
 # tell ebuilds we don't want everything
-export PKGBUMPING=1
 mkdir -p "${PORTAGE_TMPDIR}"
-ebuild "${1}" unpack
-ebuild "${2}" unpack
+PKGBUMPING=${ver1} ebuild "${1}" unpack
+PKGBUMPING=${ver2} ebuild "${2}" unpack
 s1=$(sed -nr 's/^declare -x S="(.*)"/\1/p' "${PORTAGE_TMPDIR}"/portage/${cat1}/${fn1%.ebuild}/temp/environment)
 s2=$(sed -nr 's/^declare -x S="(.*)"/\1/p' "${PORTAGE_TMPDIR}"/portage/${cat2}/${fn2%.ebuild}/temp/environment)
 

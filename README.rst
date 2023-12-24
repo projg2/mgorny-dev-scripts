@@ -79,7 +79,7 @@ plan on using it multiple times.
 
 pkgdiff-mg
 ----------
-Dependencies: portage
+Dependencies: portage, pkgcore
 
 Calls ``ebuild(1)`` to extract archives for two specified ebuilds,
 and then diffs the result.  Does not handle ebuilds unpacking multiple
@@ -98,7 +98,7 @@ only the build system files::
 
 pkgbump
 -------
-Dependencies: portage, gentoolkit (ekeyword), git
+Dependencies: portage, gentoolkit (ekeyword), git, pkgcore
 
 Copies ebuild for a version bump, dropping keywords, updating Manifest
 and running pkgdiff-mg_ to compare archives.  Typical usage::

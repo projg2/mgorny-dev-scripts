@@ -1,5 +1,19 @@
 #!/usr/bin/env bash
 
+for arg; do
+	if [[ ${arg} != *.ebuild ]]; then
+		echo "Incorrect filename: ${arg}"
+		exit 1
+	fi
+
+	filename=${arg##*/}
+	version=$(patom -F '%{fullver}' "=category/${arg%.ebuild}")
+	if [[ -z ${version} ]]; then
+		echo "Incorrect filename: ${arg}"
+		exit 1
+	fi
+done
+
 set -e -x
 
 scriptdir=${BASH_SOURCE%/*}
@@ -10,7 +24,7 @@ if grep -q "^PYTHON_COMPAT" "${2}" && type -P gpy-impl &>/dev/null; then
 	gpy-impl "${2}" -python3_{8..9} || :
 fi
 # tell ebuilds we don't want everything
-export PKGBUMPING=1
+export PKGBUMPING=${version}
 GENTOO_MIRRORS= ebuild "${2}" manifest
 [[ ! -f Manifest ]] || git add Manifest
 git add "${2}"
