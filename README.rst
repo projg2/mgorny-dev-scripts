@@ -37,6 +37,8 @@ argument specially.  Typical usage::
     pkgcommit -sS .
     # use provided commit message (prepends package)
     pkgcommit -sS -m 'Bump to 1.2.3' .
+    # use version saved by pkgbump
+    pkgcommit -sS --bump
 
 git-fixup
 ---------
