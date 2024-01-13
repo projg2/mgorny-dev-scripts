@@ -16,7 +16,7 @@ packages=(
 	dev-python/lit
 	sys-devel/lld
 	sys-devel/lld-toolchain-symlinks
-	dev-util/lldb
+	dev-debug/lldb
 	sys-libs/compiler-rt
 	sys-libs/compiler-rt-sanitizers
 	sys-libs/llvm-libunwind

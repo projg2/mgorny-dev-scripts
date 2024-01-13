@@ -12,7 +12,7 @@ packages=(
 	sys-libs/llvm-libunwind
 	sys-libs/compiler-rt-sanitizers
 	sys-libs/compiler-rt
-	dev-util/lldb
+	dev-debug/lldb
 	sys-devel/lld-toolchain-symlinks
 	sys-devel/lld
 	dev-python/lit
