@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# perform a package move
+# (c) 2024 Michał Górny <mgorny@gentoo.org>
+# SPDX-License-Identifier: GPL-2.0-or-later
 
 set -e -x
 

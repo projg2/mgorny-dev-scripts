@@ -1,5 +1,7 @@
 #!/bin/sh
 # print package name for current directory
+# (c) 2019-2024 Michał Górny <mgorny@gentoo.org>
+# SPDX-License-Identifier: GPL-2.0-or-later
 
 path=$(git rev-parse --show-prefix)
 echo "${path%/}"

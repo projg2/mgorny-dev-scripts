@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # bump botocore, boto3 and awscli
+# (c) 2022-2024 Michał Górny <mgorny@gentoo.org>
+# SPDX-License-Identifier: GPL-2.0-or-later
 
 set -e
 

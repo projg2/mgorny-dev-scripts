@@ -1,5 +1,7 @@
 #!/bin/sh
 # fetch cache for rdep
+# (c) 2020-2024 Michał Górny <mgorny@gentoo.org>
+# SPDX-License-Identifier: GPL-2.0-or-later
 
 mkdir -p "${TMPDIR:-/tmp}"/mgorny-dev-scripts || exit 1
 cd "${TMPDIR:-/tmp}"/mgorny-dev-scripts || exit 1

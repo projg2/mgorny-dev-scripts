@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # run specified command if there are more than one ebuild versions
 # in current dir
+# (c) 2019-2024 Michał Górny <mgorny@gentoo.org>
+# SPDX-License-Identifier: GPL-2.0-or-later
 
 no=0
 

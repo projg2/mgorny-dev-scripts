@@ -1,5 +1,7 @@
 #!/bin/sh
 # check packages' revdeps (defaults to current pkg)
+# (c) 2020-2024 Michał Górny <mgorny@gentoo.org>
+# SPDX-License-Identifier: GPL-2.0-or-later
 
 if [ ${#} -eq 0 ]; then
 	set -- $(pkg)

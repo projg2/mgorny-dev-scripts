@@ -1,5 +1,7 @@
 #!/bin/sh
 # print revdeps of packages specified on command-line
+# (c) 2019-2024 Michał Górny <mgorny@gentoo.org>
+# SPDX-License-Identifier: GPL-2.0-or-later
 
 # bsdtar is faster than GNU tar
 if command -v bsdtar >/dev/null; then

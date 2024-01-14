@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # open a browser to file stablereq for kernel versions ${@}
-
+# (c) 2022-2024 Michał Górny <mgorny@gentoo.org>
+# SPDX-License-Identifier: GPL-2.0-or-later
+-
 set -e
 scriptdir=${BASH_SOURCE%/*}
 

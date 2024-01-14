@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # grab stabilization candidates and pipe them into eshowkw
+# (c) 2021-2024 Michał Górny <mgorny@gentoo.org>
+# SPDX-License-Identifier: GPL-2.0-or-later
 
 pkgcheck scan ${PKGCHECK_ARGS} -c StableRequestCheck \
 	-R FormatReporter --format '{category}/{package}' "${@}" |

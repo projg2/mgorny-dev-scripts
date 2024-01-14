@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# format stabilization candidates for maintainer
+# (c) 2022-2024 Matt Turner <mgorny@gentoo.org>
+# SPDX-License-Identifier: GPL-2.0-or-later
 
 set -e
 

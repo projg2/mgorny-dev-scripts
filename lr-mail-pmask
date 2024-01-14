@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # open a mail client with template last rites mail based on current diff
+# (c) 2019-2024 Michał Górny <mgorny@gentoo.org>
+# SPDX-License-Identifier: GPL-2.0-or-later
 
 set -e
 

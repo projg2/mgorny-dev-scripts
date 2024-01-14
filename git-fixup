@@ -1,5 +1,7 @@
 #!/bin/sh
 # commit a fixup! to the last change in specified file/directory
 # (current directory by default)
+# (c) 2019-2024 Michał Górny <mgorny@gentoo.org>
+# SPDX-License-Identifier: GPL-2.0-or-later
 
 exec git commit --fixup $(git log --format='%H' -1 "${@:-.}") "${@:-.}"

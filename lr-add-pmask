@@ -1,5 +1,7 @@
 #!/bin/sh
 # add a template package.mask entry for pkg ${1} with bug ${2}
+# (c) 2019-2024 Michał Górny <mgorny@gentoo.org>
+# SPDX-License-Identifier: GPL-2.0-or-later
 
 pkg=${1}
 bug=${2}

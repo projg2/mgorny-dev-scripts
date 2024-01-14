@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# (c) 2019-2024 Michał Górny <mgorny@gentoo.org>
+# SPDX-License-Identifier: GPL-2.0-or-later
 
 for arg; do
 	if [[ ${arg} != *.ebuild ]]; then

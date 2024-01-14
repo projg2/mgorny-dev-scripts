@@ -2,6 +2,8 @@
 # remove the specified package, opening all relevant bugs in the browser
 # and grepping profiles for stale references
 # note: package.mask entry must be removed first!
+# (c) 2019-2024 Michał Górny <mgorny@gentoo.org>
+# SPDX-License-Identifier: GPL-2.0-or-later
 
 scriptdir=${BASH_SOURCE%/*}
 pkg=${1}; shift

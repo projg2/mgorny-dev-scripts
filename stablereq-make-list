@@ -1,6 +1,8 @@
 #!/bin/sh
 # grab stabilization candidates and pipe a list of 'file-stablereq' commands
 # into an editor
+# (c) 2021-2024 Michał Górny <mgorny@gentoo.org>
+# SPDX-License-Identifier: GPL-2.0-or-later
 
 pkgcheck scan ${PKGCHECK_ARGS} -c StableRequestCheck -R FormatReporter \
 	--format '={category}/{package}-{version}' "${@}" |

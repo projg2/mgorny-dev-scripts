@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # check whether packages that should be kept in sync are up-to-date
+# (c) 2023-2024 Michał Górny <mgorny@gentoo.org>
+# SPDX-License-Identifier: GPL-2.0-or-later
 
 REPO=$(git rev-parse --show-toplevel)
 PKGS=(

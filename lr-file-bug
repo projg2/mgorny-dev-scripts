@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 # open a browser with template for filing removal bug for pkg(s) ${*}
+# (c) 2019-2024 Michał Górny <mgorny@gentoo.org>
+# SPDX-License-Identifier: GPL-2.0-or-later
 
 set -e
 

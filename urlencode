@@ -1,4 +1,6 @@
 #!/bin/sh
 # Quick wrapper to URL-encode stdin to stdout, via Perl.
+# (c) 2019-2024 Michał Górny <mgorny@gentoo.org>
+# SPDX-License-Identifier: GPL-2.0-or-later
 
 exec perl -MURI::Escape -00 -p -e 'chomp; $_ = uri_escape $_'
