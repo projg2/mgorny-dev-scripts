@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+set -e -x
+
+scriptdir=${BASH_SOURCE%/*}
+from=${1}
+to=${2}
+
+[[ ${from} && ${to} ]]
+
+if [[ -d ${from} ]]; then
+	git mv "${from}" "${to}"
+fi
+
+find profiles/updates -type f -exec sed -i -e "\@^move ${from} @d" {} +
+git grep -l "${from}" :!profiles/updates |
+	xargs -r sed -i -e "s@${from}@${to}@g"
+echo "move ${from} ${to}" >> profiles/updates/$(date "+%qQ-%Y")
+
+modified=( $(git diff --name-only HEAD) )
+"${scriptdir}"/copybump "${modified[@]}"
+if type -P gpy-impl &>/dev/null; then
+	git grep -l "^PYTHON_COMPAT" "${modified[@]}" |
+		xargs -r gpy-impl -@dead || :
+fi

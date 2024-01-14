@@ -108,6 +108,22 @@ and running pkgdiff-mg_ to compare archives.  Typical usage::
 
     pkgbump foo-1.0.ebuild foo-1.1.ebuild
 
+pkgmove
+-------
+Dependencies: git
+Optional dependencies: gpyutils >= 0.12 (gpy-impl)
+
+Performs a package move.  Moves the package directory if the old name
+still exists.  Updates all entries in ebuilds, eclasses and profiles.
+Adds a profiles/updates entry.
+
+WARNING: edits are done using greedy sed.  Double-check the results.
+
+Example use::
+
+    pkgmove dev-util/cmake-fedora dev-build/cmake-fedora
+    pkgmove dev-util/cmake dev-build/cmake
+
 mkpatchset
 ----------
 Dependencies: git, scp
