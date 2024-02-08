@@ -30,5 +30,5 @@ export PKGBUMPING=${version}
 GENTOO_MIRRORS= ebuild "${2}" manifest
 [[ ! -f Manifest ]] || git add Manifest
 git add "${2}"
-echo "${version}" > "${TMPDIR:-/tmp}"/pkgbump-pv
+echo "${version}" > .pkgbump-pv
 exec "${scriptdir}"/pkgdiff-mg "${1}" "${2}"

@@ -5,6 +5,7 @@
 
 args=()
 msg=
+used_bump=
 
 # check for -m ...
 while [[ ${#} -gt 0 ]]; do
@@ -15,7 +16,9 @@ while [[ ${#} -gt 0 ]]; do
 			continue
 			;;
 		--bump)
-			msg="Bump to $(</tmp/pkgbump-pv)"
+			[[ -n .pkgbump-pv ]]
+			used_bump=1
+			msg="Bump to $(<.pkgbump-pv)"
 			shift
 			continue
 			;;
@@ -34,3 +37,6 @@ if [[ -s ${tmpf} ]]; then
 	git commit -F "${tmpf}" "${args[@]}"
 fi
 rm -f "${tmpf}"
+if [[ ${used_bump} ]]; then
+	rm .pkgbump-pv
+fi
