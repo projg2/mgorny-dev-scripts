@@ -32,7 +32,7 @@ bump_pkg() {
 
 		"${scriptdir}"/pkgbump "${newest}.${oldv}.ebuild" "${newest}.${newv}.ebuild"
 		${EDITOR:-vim} "${newest}.${newv}.ebuild"
-		"${scriptdir}"/pkgcommit . -sS -m "Bump to ${newest##*-}.${newv}"
+		"${scriptdir}"/pkgcommit . -sS --bump
 	)
 }
 
