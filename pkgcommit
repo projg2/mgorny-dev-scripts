@@ -16,7 +16,10 @@ while [[ ${#} -gt 0 ]]; do
 			continue
 			;;
 		--bump)
-			[[ -n .pkgbump-pv ]]
+			if [[ ! -f .pkgbump-pv ]]; then
+				echo "No .pkgbump-pv (pkgbump not used?)" >&2
+				exit 1
+			fi
 			used_bump=1
 			msg="Bump to $(<.pkgbump-pv)"
 			shift
