@@ -20,6 +20,8 @@ while [[ ${#} -gt 0 ]]; do
 				echo "No .pkgbump-pv (pkgbump not used?)" >&2
 				exit 1
 			fi
+			# make sure it doesn't up being committed
+			git rm --cached .pkgbump-pv || :
 			used_bump=1
 			msg="Bump to $(<.pkgbump-pv)"
 			shift
