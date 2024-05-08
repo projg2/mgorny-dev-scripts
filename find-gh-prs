@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# open a browser searching Gentoo GitHub repo for pull requests
+# (c) 2024 Michał Górny <mgorny@gentoo.org>
+# SPDX-License-Identifier: GPL-2.0-or-later
+
+scriptdir=${BASH_SOURCE%/*}
+search=
+while [[ ${#} -gt 0 ]]; do
+	search+=${1}
+	[[ -n ${2} ]] && search+=' OR '
+	shift
+done
+
+set -e
+
+exec xdg-open "https://github.com/gentoo/gentoo/pulls?q=is:pr+is:open+$("${scriptdir}"/urlencode <<<"${search}")"

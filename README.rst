@@ -268,6 +268,19 @@ of the packages listed on command-line.  Typical usage::
     find-pkg-bugs app-bar/foo app-foo/bar
 
 
+GitHub helpers
+==============
+
+find-gh-prs
+-----------
+Dependencies: xdg-utils, perl
+
+Runs a web browser with GitHub pull request search for bugs referring
+to any of the packages listed on command-line.  Typical usage::
+
+    find-gh-prs app-bar/foo app-foo/bar
+
+
 Lastriting helpers
 ==================
 
