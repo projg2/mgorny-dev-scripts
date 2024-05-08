@@ -34,7 +34,7 @@ msg="${pkg}: Remove last-rited pkg
 if [[ -n ${@} ]]; then
 	for bug; do
 		msg+="
-Closes: https://bugs.gentoo.org/${bug}"
+Bug: https://bugs.gentoo.org/${bug}"
 	done
 fi
 
