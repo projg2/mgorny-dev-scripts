@@ -40,8 +40,8 @@ argument specially.  Typical usage::
     # use version saved by pkgbump
     pkgcommit -sS --bump
 
-git-fixup
----------
+git-fixup-mg
+------------
 Dependencies: git
 
 Commits changes to the specified files (or current directory, if no
@@ -52,7 +52,7 @@ Typical usage::
     # initial commit
     pkgcommit -sS -m 'Bump to 1.2.3'
     # do some fixes
-    git-fixup
+    git-fixup-mg
     # rebase squashes fixup into parent commit
     git rebase -i -S origin
 
