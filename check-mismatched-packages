@@ -25,7 +25,7 @@ while read -r PKG; do
 	VERSION=${VERSION%_p*}
 	VERSIONS[${NAME}:${SLOT}]=${VERSION}
 done < <(
-	pquery -q -r "${REPO}" --slot "${PKGS[@]%=*}" "${PKGS[@]#*=}"
+	pquery --raw --quiet --repo "${REPO}" --slot "${PKGS[@]%=*}" "${PKGS[@]#*=}"
 )
 
 RET=0
