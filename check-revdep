@@ -10,4 +10,4 @@ fi
 rdep "${@}" | grep -v '^\[B' |
 	xargs patom -F '%{category}/%{package}' 2>/dev/null |
 	sort -u |
-	xargs pkgcheck scan -c VisibilityCheck --exit error nonexist/nonexist
+	xargs pkgcheck scan -c SourcingCheck,VisibilityCheck --exit error
