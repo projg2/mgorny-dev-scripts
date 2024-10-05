@@ -18,7 +18,9 @@ fi
 find profiles/updates -type f -exec sed -i -e "\@^move ${from} @d" {} +
 git grep -l "${from}" :!profiles/updates |
 	xargs -r sed -i -e "s@${from}@${to}@g"
-echo "move ${from} ${to}" >> profiles/updates/$(date "+%qQ-%Y")
+update_file=profiles/updates/$(date "+%qQ-%Y")
+echo "move ${from} ${to}" >> "${update_file}"
+git add -N "${update_file}"
 
 modified=( $(git diff --name-only HEAD) )
 "${scriptdir}"/copybump "${modified[@]}"
