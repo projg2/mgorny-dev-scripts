@@ -36,7 +36,13 @@ fn2=${2##*/}
 ver1=$(patom -F '%{fullver}' "=${cat1}/${fn1%.ebuild}")
 ver2=$(patom -F '%{fullver}' "=${cat2}/${fn2%.ebuild}")
 
-export PORTAGE_TMPDIR="${TMPDIR:-/tmp}"/mgorny-dev-scripts
+DEFAULT_TMPDIR=/tmp
+if [[ -d /run/systemd/system ]]; then
+	# System booted via systemd, which automatically cleans up stale
+	# files in /var/tmp.
+	DEFAULT_TMPDIR=/var/tmp
+fi
+export PORTAGE_TMPDIR="${TMPDIR:-${DEFAULT_TMPDIR}}"/mgorny-dev-scripts
 export USE="${USE} test"
 # use noauto to skip pkg_setup
 export FEATURES="${FEATURES} noauto"
