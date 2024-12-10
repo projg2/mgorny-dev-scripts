@@ -8,6 +8,7 @@ cd "$(git rev-parse --show-toplevel)" || exit 1
 packages=(
 	dev-libs/libclc
 	sys-devel/clang-runtime
+	sys-libs/llvm-offload
 	sys-libs/libomp
 	sys-libs/libcxx
 	sys-libs/libcxxabi

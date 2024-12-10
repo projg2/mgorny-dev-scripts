@@ -25,6 +25,7 @@ packages=(
 	sys-libs/libcxxabi
 	sys-libs/libcxx
 	sys-libs/libomp
+	sys-libs/llvm-offload
 	sys-devel/clang-runtime
 	dev-libs/libclc
 )
