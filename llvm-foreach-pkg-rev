@@ -6,28 +6,28 @@
 cd "$(git rev-parse --show-toplevel)" || exit 1
 
 packages=(
-	dev-libs/libclc
-	sys-devel/clang-runtime
-	sys-libs/llvm-offload
-	sys-libs/libomp
-	sys-libs/libcxx
-	sys-libs/libcxxabi
-	sys-libs/llvm-libunwind
-	sys-libs/compiler-rt-sanitizers
-	sys-libs/compiler-rt
-	dev-debug/lldb
-	sys-devel/lld-toolchain-symlinks
-	sys-devel/lld
+	llvm-core/libclc
+	llvm-core/clang-runtime
+	llvm-runtimes/offload
+	llvm-runtimes/openmp
+	llvm-runtimes/libcxx
+	llvm-runtimes/libcxxabi
+	llvm-runtimes/libunwind
+	llvm-runtimes/compiler-rt-sanitizers
+	llvm-runtimes/compiler-rt
+	llvm-core/lldb
+	llvm-core/lld-toolchain-symlinks
+	llvm-core/lld
 	dev-python/lit
-	dev-python/clang-python
-	sys-devel/clang-toolchain-symlinks
-	sys-devel/clang
-	sys-devel/clang-common
-	dev-ml/llvm-ocaml
-	sys-devel/llvmgold
-	sys-devel/llvm-toolchain-symlinks
-	sys-devel/llvm
-	sys-devel/llvm-common
+	dev-python/clang
+	llvm-core/clang-toolchain-symlinks
+	llvm-core/clang
+	llvm-core/clang-common
+	dev-ml/llvm
+	llvm-core/llvmgold
+	llvm-core/llvm-toolchain-symlinks
+	llvm-core/llvm
+	llvm-core/llvm-common
 )
 
 for pkg in "${packages[@]}"; do
