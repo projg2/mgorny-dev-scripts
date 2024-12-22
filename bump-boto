@@ -8,17 +8,14 @@ set -e
 scriptdir=${BASH_SOURCE%/*}
 cd "$(git rev-parse --show-toplevel)"
 
-OLDV=${1}
-NEWV=${2}
-if ! [[ ${OLDV} && ${NEWV} ]]; then
-	echo "Usage: ${0} <old-last-version-comp> <new-last-version-comp>" >&2
+INCREMENT=${1#+}
+if ! [[ ${INCREMENT} ]]; then
+	echo "Usage: ${0} <increment>" >&2
 	exit 1
 fi
 
 bump_pkg() {
 	local pkg=${1}
-	local oldv=${2}
-	local newv=${3}
 
 	(
 		cd "${pkg}"
@@ -28,7 +25,10 @@ bump_pkg() {
 		if [[ ${newest} == *9999* ]]; then
 			newest=${ebuilds[-2]}
 		fi
-		newest=${newest%.*.ebuild}
+		newest=${newest%.ebuild}
+		local oldv=${newest##*.}
+		local newv=$(( oldv + INCREMENT ))
+		newest=${newest%.*}
 
 		"${scriptdir}"/pkgbump "${newest}.${oldv}.ebuild" "${newest}.${newv}.ebuild"
 		${EDITOR:-vim} "${newest}.${newv}.ebuild"
@@ -36,6 +36,6 @@ bump_pkg() {
 	)
 }
 
-bump_pkg dev-python/botocore ${OLDV} ${NEWV}
-bump_pkg dev-python/boto3 ${OLDV} ${NEWV}
-bump_pkg app-admin/awscli ${OLDV} ${NEWV}
+bump_pkg dev-python/botocore
+bump_pkg dev-python/boto3
+bump_pkg app-admin/awscli

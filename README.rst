@@ -428,10 +428,10 @@ Common dependencies: same as pkgbump + pkgcommit
 bump-boto
 ---------
 Bump ``dev-python/botocore``, ``dev-python/boto3`` and ``app-admin/awscli``
-in lockstep.  Takes the old and new values for the last version
-component (for botocore and boto3).  Typical usage::
+in lockstep.  Takes the increment for the last version component.  Typical
+usage::
 
-    bump-boto 18 19
+    bump-boto +1
 
 bump-kernels
 ------------
