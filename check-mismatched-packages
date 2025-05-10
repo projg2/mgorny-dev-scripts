@@ -19,6 +19,8 @@ PKGS=(
 	dev-python/python-tests:3.12=dev-lang/python:3.12
 	dev-python/python-tests:3.13=dev-lang/python:3.13
 	dev-python/python-tests:3.13t=dev-lang/python:3.13t
+	dev-python/python-tests:3.14=dev-lang/python:3.14
+	dev-python/python-tests:3.14t=dev-lang/python:3.14t
 	dev-python/uv=dev-python/uv-build
 )
 
