@@ -20,7 +20,8 @@ bump_pkg() {
 	(
 		cd "${pkg}"
 
-		local ebuilds=( *.ebuild )
+		local ebuilds
+		mapfile -t ebuilds < <(printf '%s\n' *.ebuild | sort -V)
 		local newest=${ebuilds[-1]}
 		if [[ ${newest} == *9999* ]]; then
 			newest=${ebuilds[-2]}
