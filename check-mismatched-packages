@@ -32,6 +32,8 @@ while read -r PKG; do
 	NAME=${PKG%-*}
 	VERSION=${PKG##*-}
 	VERSION=${VERSION%_p*}
+	# ignore live ebuilds, we want to check newest release
+	[[ ${VERSION} == *9999* ]] && continue
 	VERSIONS[${NAME}:${SLOT}]=${VERSION}
 done < <(
 	pquery --raw --quiet --repo "${REPO}" --slot "${PKGS[@]%=*}" "${PKGS[@]#*=}"
