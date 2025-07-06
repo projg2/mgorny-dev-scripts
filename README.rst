@@ -503,3 +503,13 @@ afterwards.  Read `LLVM/Releases`_ on the wiki for more details.
 
 .. _fork/llvm-project: https://gitweb.gentoo.org/fork/llvm-project.git/
 .. _LLVM/Releases: https://wiki.gentoo.org/wiki/Project:LLVM/Releases
+
+linux-patchset
+--------------
+Makes the ``sys-kernel/*-kernel`` patchset.  Typical usage::
+
+    linux-patchset 6.15.5
+
+Run it in `fork/linux`_ checkout.  Remember to push the tags afterwards.
+
+.. _fork/linux: https://gitweb.gentoo.org/fork/linux.git/

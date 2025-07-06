@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# generate Linux kernel patchset
+# (c) 2025 Michał Górny <mgorny@gentoo.org>
+# SPDX-License-Identifier: GPL-2.0-or-later
+
+set -e -x
+scriptdir=${BASH_SOURCE%/*}
+ver=${1}
+[[ -n ${ver} ]]
+exec "${scriptdir}"/mkpatchset "gentoo-${ver}" "linux-gentoo-patches-${ver}" \
+	"v${ver%_p*}" linux/

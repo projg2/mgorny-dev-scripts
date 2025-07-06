@@ -21,14 +21,13 @@ while [[ ${#} -gt 0 ]]; do
 			cp "${match[-1]}" "${newk}"
 			ekeyword ~all "${newk}"
 			"${scriptdir}"/copybump "${newk}"
+			sed -i -e "s:^\(SHA256SUM_DATE=\).*:\1$(date +%Y%m%d):" "${newk}"
 			${EDITOR:-vim} "${newk}"
 			GENTOO_MIRRORS= ebuild "${newk}" manifest
 
-			# do verify-sig
-			if [[ ${pkg} == vanilla-kernel ]]; then
-				USE=verify-sig ebuild "${newk}" unpack
-				ebuild "${newk}" clean
-			fi
+			# do verify-sig & test patching
+			USE="experimental verify-sig" ebuild "${newk}" prepare
+			ebuild "${newk}" clean
 
 			git add Manifest "${newk}"
 			"${scriptdir}"/pkgcommit -sS . -m "Bump to ${new}"

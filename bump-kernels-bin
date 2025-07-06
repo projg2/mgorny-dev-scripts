@@ -32,6 +32,7 @@ while [[ ${#} -gt 0 ]]; do
 			cp "${match[-1]}" "${newk}"
 			ekeyword ~all "${newk}"
 			"${scriptdir}"/copybump "${newk}"
+			sed -i -e "s:^\(SHA256SUM_DATE=\).*:\1$(date +%Y%m%d):" "${newk}"
 			${EDITOR:-vim} "${newk}"
 			GENTOO_MIRRORS= ebuild "${newk}" manifest
 
