@@ -8,4 +8,4 @@ scriptdir=${BASH_SOURCE%/*}
 ver=${1}
 [[ -n ${ver} ]]
 exec "${scriptdir}"/mkpatchset "gentoo-${ver}" "linux-gentoo-patches-${ver}" \
-	"v${ver%_p*}" linux/
+	"v${ver%-r*}" linux/
