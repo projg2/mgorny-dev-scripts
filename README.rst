@@ -420,6 +420,15 @@ save space by cleanly emptying unused repositories while preserving
 
     git-make-empty
 
+vgrep
+-----
+Dependencies: git, vim
+
+Wraps ``git grep`` to call ``vim`` with the same search pattern.
+Typical usage::
+
+    vgrep foo.*bar profiles/
+
 
 Package bumping helpers
 =======================

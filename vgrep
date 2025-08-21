@@ -1,0 +1,6 @@
+#!/bin/sh
+# wrap git grep + vim with the same search pattern
+# (c) 2025 Michał Górny <mgorny@gentoo.org>
+# SPDX-License-Identifier: GPL-2.0-or-later
+
+exec git grep -O"vim -p -c '/${1}'" "${@}"
