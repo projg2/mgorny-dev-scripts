@@ -7,5 +7,7 @@ set -e -x
 scriptdir=${BASH_SOURCE%/*}
 ver=${1}
 [[ -n ${ver} ]]
+upst_ver=${ver%-r*}
+upst_ver=${upst_ver%_p*}
 exec "${scriptdir}"/mkpatchset "gentoo-${ver}" "linux-gentoo-patches-${ver}" \
-	"v${ver%-r*}" linux/
+	"v${upst_ver}" linux/
