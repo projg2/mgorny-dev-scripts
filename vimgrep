@@ -3,4 +3,4 @@
 # (c) 2025 Michał Górny <mgorny@gentoo.org>
 # SPDX-License-Identifier: GPL-2.0-or-later
 
-exec git grep -O"vim -p -c '/${1}'" "${@}"
+exec git grep -O"vim -p -c 'tabdo 1' -c 'tabdo /${1}' -c tabn" "${@}"
